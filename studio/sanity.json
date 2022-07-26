@@ -1,7 +1,8 @@
 {
   "root": true,
   "project": {
-    "name": "Blái Vasinn"
+    "name": "Blái Vasinn",
+    "basePath": "/studio"
   },
   "api": {
     "projectId": "vz7squtm",
@@ -15,9 +16,7 @@
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [
