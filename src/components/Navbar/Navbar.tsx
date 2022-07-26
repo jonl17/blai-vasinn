@@ -1,24 +1,18 @@
 import Link from 'next/link'
 import React from 'react'
+import { DUMMY_MENU } from '~/dummy'
 import { IMenuItem } from '~/types'
-
-const MENU: Array<IMenuItem> = [
-  { slug: '/', label: 'Home' },
-  { slug: '/artists', label: 'Artists' },
-  { slug: '/tags', label: 'Tags' },
-  { slug: '/documents', label: 'Documents' },
-]
 
 interface INavbar {
   items: Array<IMenuItem>
 }
 
-const Navbar = ({ items = MENU }: INavbar) => {
+const Navbar = ({ items = DUMMY_MENU }: INavbar) => {
   return (
     <nav className="bg-black text-white w-full">
       <ul className="flex justify-between h-24 max-w-lg mx-auto px-4">
         {items.map((item, idx) => (
-          <Link key={idx} passHref href={item.slug}>
+          <Link key={idx} passHref href={`/${item.slug}`}>
             <a className="flex place-items-center">
               <li>
                 <p className="underline">{item.label}</p>
