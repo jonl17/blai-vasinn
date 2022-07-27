@@ -43,8 +43,8 @@ const SingleArtistPage: NextPage<Props> = ({ artist }) => {
 export default SingleArtistPage
 
 const singleArtistQuery = groq`
-  *[_type == "artist" && _id == $id] {
-    _id,
+  *[_type == "artist" && slug.current == $slug] {
+    slug,
     fname,
     documents[]->
   }
@@ -58,7 +58,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   }
 
-  const artist = await getClient().fetch(singleArtistQuery, { id: params.slug })
+  const artist = await getClient().fetch(singleArtistQuery, {
+    slug: params.slug,
+  })
 
   return {
     props: {
@@ -67,22 +69,20 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 }
 
-const allArtistFnameQuery = groq`
+const allArtistSlugsQuery = groq`
   *[_type == "artist"] {
-    _id,
-    fname,
-    documents[]->
+    slug
   }
 `
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const result = await getClient().fetch(allArtistFnameQuery)
-  const paths = result.map((result: { _id: string }) => ({
-    params: { slug: `/artists/${result._id}` },
+  const result = await getClient().fetch(allArtistSlugsQuery)
+  const paths = result.map((result: { slug: { current: string } }) => ({
+    params: { slug: result.slug.current },
   }))
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   }
 }

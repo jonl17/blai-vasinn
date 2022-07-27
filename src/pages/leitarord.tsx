@@ -9,7 +9,6 @@ type Props = {
 }
 
 const AllTagsPage: NextPage<Props> = ({ tags }) => {
-  console.log(tags)
   return (
     <div className="p-10 bg-black text-white h-screen">
       <h1 className="text-medium mb-3">{`Registered tags (${tags.length})`}</h1>

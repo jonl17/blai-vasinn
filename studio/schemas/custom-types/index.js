@@ -1,3 +1,5 @@
+import slugify from 'slugify'
+
 export const text = {
   title: 'Rich text',
   name: 'rich_text',
@@ -62,6 +64,17 @@ export const artist = {
       title: 'Full name',
       name: 'fname',
       type: 'string',
+    },
+    {
+      title: 'Slug',
+      name: 'slug',
+      type: 'slug',
+      description:
+        'represents the url of artist detail page: /listamenn/sigurdur-gudmundsson',
+      options: {
+        source: 'fname',
+        slugify: (input) => slugify(input, { lower: true }),
+      },
     },
     {
       title: 'Bio',

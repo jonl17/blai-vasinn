@@ -1,8 +1,8 @@
 import { IMenuItem } from './types'
 
 export const DUMMY_MENU: Array<IMenuItem> = [
-  { slug: '', label: 'Home' },
-  { slug: 'artists', label: 'Artists' },
-  { slug: 'tags', label: 'Tags' },
-  { slug: 'documents', label: 'Documents' },
+  { slug: '', label: 'Heim' },
+  { slug: 'listamenn', label: 'Listamenn' },
+  { slug: 'leitarord', label: 'Leitarorð' },
+  { slug: 'skjol', label: 'Skjöl' },
 ]

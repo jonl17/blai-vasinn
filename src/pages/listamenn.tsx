@@ -15,7 +15,7 @@ const AllArtistsPage: NextPage<Props> = ({ artists }) => {
       <div>
         <ul>
           {artists.map((artist, idx) => (
-            <Link key={idx} passHref href={`/artists/${artist._id}`}>
+            <Link key={idx} passHref href={`/listamenn/${artist.slug.current}`}>
               <a>
                 <li key={idx}>
                   <p className="underline">{artist.fname}</p>
@@ -31,7 +31,7 @@ const AllArtistsPage: NextPage<Props> = ({ artists }) => {
 
 const query = groq`
   *[_type == "artist"] | order(fname) {
-    _id,
+    slug,
     fname,
     documents[]->,
     bio

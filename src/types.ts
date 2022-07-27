@@ -8,7 +8,9 @@ export interface IDocument {
 }
 
 export interface IArtist {
-  _id: string
+  slug: {
+    current: string
+  }
   fname: string
   documents: Array<IDocument>
 }
