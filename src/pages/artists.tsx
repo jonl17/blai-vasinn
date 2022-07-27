@@ -3,7 +3,6 @@ import { groq } from 'next-sanity'
 import Link from 'next/link'
 import { getClient } from '~/sanityLib/sanity'
 import { IArtist } from '~/types'
-import { generateArtistUrl } from '~/utils'
 
 type Props = {
   artists: Array<IArtist>

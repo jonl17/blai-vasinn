@@ -19,6 +19,9 @@ export const text = {
       name: 'tags',
       type: 'array',
       of: [{ type: 'string' }],
+      options: {
+        layout: 'tags',
+      },
     },
   ],
 }
@@ -43,6 +46,9 @@ export const media = {
       name: 'tags',
       type: 'array',
       of: [{ type: 'string' }],
+      options: {
+        layout: 'tags',
+      },
     },
   ],
 }
