@@ -21,9 +21,10 @@ export default {
           type: 'object',
           fields: [
             {
-              type: 'string',
-              title: 'Label',
-              name: 'label',
+              title: 'Page',
+              name: 'page',
+              type: 'reference',
+              to: [{ type: 'homepage' }, { type: 'page' }],
             },
           ],
         },

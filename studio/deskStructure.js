@@ -22,7 +22,14 @@ export default () =>
             ])
         ),
       S.divider(),
+      S.listItem()
+        .title('Pages')
+        .child(S.documentList().title('All pages').filter('_type == "page"')),
+      S.listItem()
+        .title('Homepage')
+        .child(S.document().schemaType('homepage').documentId('homepage')),
       ...S.documentTypeListItems().filter(
-        (listItem) => !['seo', 'mainMenu'].includes(listItem.getId())
+        (listItem) =>
+          !['seo', 'mainMenu', 'page', 'homepage'].includes(listItem.getId())
       ),
     ])

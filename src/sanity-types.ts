@@ -82,13 +82,52 @@ export interface MainMenu extends SanityDocument {
   menuItems?: Array<
     SanityKeyed<{
       /**
-       * Label — `string`
+       * Page — `reference`
        *
        *
        */
-      label?: string;
+      page?: SanityReference<Homepage | Page>;
     }>
   >;
 }
 
-export type Documents = Seo | MainMenu;
+/**
+ * Page
+ *
+ *
+ */
+export interface Page extends SanityDocument {
+  _type: "page";
+
+  /**
+   * title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   *
+   */
+  slug?: { _type: "slug"; current: string };
+}
+
+/**
+ * Homepage
+ *
+ *
+ */
+export interface Homepage extends SanityDocument {
+  _type: "homepage";
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+}
+
+export type Documents = Seo | MainMenu | Page | Homepage;

@@ -1,7 +1,8 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { SEO } from '@src/components'
+import { Marquee, SEO } from '@src/components'
 import { Seo } from '@src/sanity-types'
+import PageLayout from '@src/components/PageLayout'
 
 interface CustomAppProps extends AppProps {
   pageProps: {
@@ -13,7 +14,9 @@ function MyApp({ Component, pageProps }: CustomAppProps) {
   return (
     <>
       <SEO {...pageProps.seo} />
-      <Component {...pageProps} />
+      <PageLayout>
+        <Component {...pageProps} />
+      </PageLayout>
     </>
   )
 }
