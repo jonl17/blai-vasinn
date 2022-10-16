@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cmp": "npx hygen cmp new"
+    "cmp": "npx hygen cmp new",
+    "studio": "cd studio && npx @sanity/cli start"
   },
   "dependencies": {
     "next": "12.3.1",
