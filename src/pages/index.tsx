@@ -1,4 +1,3 @@
-import { Marquee } from '@src/components'
 import type { GetStaticProps, NextPage } from 'next'
 import { seoService } from '@src/lib/sanityService'
 

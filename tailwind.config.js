@@ -8,7 +8,9 @@ module.exports = {
       black: 'rgb(51,51,51)',
     },
     fontSize: {
-      small: ['18px', '20.5px'],
+      '18/20.5': ['18px', '20.5px'],
+      '29/32': ['29px', '32px'],
+      '50/52': ['50px', '52px'],
     },
     extend: {
       animation: {
