@@ -5,7 +5,7 @@ module.exports = {
     colors: {
       white: 'rgb(255,255,230)',
       blue: 'rgb(0,0,255)',
-      black: 'rgb(25,25,25)',
+      black: 'rgb(51,51,51)',
     },
     fontSize: {
       small: ['18px', '20.5px'],
