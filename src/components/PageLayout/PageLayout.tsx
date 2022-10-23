@@ -1,5 +1,6 @@
 import Marquee from '@src/components/Marquee'
 import Navbar from '../Navbar'
+import ResizableTabs from '../ResizableTabs'
 import Sidebar from '../Sidebar'
 
 type Props = {
@@ -12,10 +13,7 @@ export default function PageLayout({ children }: Props) {
       <Marquee items={Array.from(Array(50)).map((_, idx) => `${2022 - idx}`)} />
       <div className="min-h-screen w-full flex flex-col">
         <Navbar />
-        <div className="flex h-full">
-          <div className="border-l-2 flex-1">{children}</div>
-          <Sidebar>sidebar is here</Sidebar>
-        </div>
+        <ResizableTabs>{children}</ResizableTabs>
       </div>
     </main>
   )
