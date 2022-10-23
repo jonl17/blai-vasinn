@@ -7,14 +7,10 @@ type Props = {
 
 export default function ResizableTabs({ children }: Props) {
   const canDrag = useRef(false)
-  const [lastDownX, setLastDownX] = useState(0)
-
   const asideRef = useRef<HTMLElement | null>(null)
   const containerRef = useRef<HTMLDivElement | null>(null)
   const dragBtnRef = useRef<HTMLButtonElement | null>(null)
   const contentRef = useRef<HTMLDivElement | null>(null)
-
-  console.log('rerendering whole shabazzle')
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -55,10 +51,8 @@ export default function ResizableTabs({ children }: Props) {
         <div>{children}</div>
         <button
           ref={dragBtnRef}
-          onMouseDown={(e) => {
-            console.log('DOWN')
+          onMouseDown={() => {
             canDrag.current = true
-            setLastDownX(e.clientY)
           }}
           onMouseUp={() => (canDrag.current = false)}
           onMouseLeave={() => (canDrag.current = false)}
