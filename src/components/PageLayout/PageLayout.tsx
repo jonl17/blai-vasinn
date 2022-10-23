@@ -1,7 +1,6 @@
 import Marquee from '@src/components/Marquee'
 import Navbar from '../Navbar'
 import ResizableTabs from '../ResizableTabs'
-import Sidebar from '../Sidebar'
 
 type Props = {
   children: React.ReactNode
