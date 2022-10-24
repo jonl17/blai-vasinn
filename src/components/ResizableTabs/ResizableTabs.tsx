@@ -48,9 +48,14 @@ export default function ResizableTabs({ children }: Props) {
         ref={asideRef}
         className="border-l-0 h-full w-[30%] absolute right-0 top-0 overflow-hidden pt-5"
       >
-        <div className="w-[350px]">
+        <div className="w-[350px] p-5">
           {/* sidebar contents */}
-          <Text variant="large">Side bar is here</Text>
+          <Text variant="small">Side bar is here</Text>
+          <Text variant="small">Side bar is here</Text>
+          <Text variant="small">Side bar is here</Text>
+          <Text variant="small">Side bar is here</Text>
+          <Text variant="small">Side bar is here</Text>
+          <Text variant="small">Side bar is here</Text>
         </div>
       </aside>
       <aside
@@ -58,14 +63,18 @@ export default function ResizableTabs({ children }: Props) {
         className=" w-[70%] h-full absolute left-0 top-0 pt-5"
       >
         {/* page contents */}
-        <div className="border-r-2 border-l-2 h-full">{children}</div>
+        <div className="border-r-2 border-l-2 h-full p-5">{children}</div>
         <button
           ref={dragBtnRef}
           onMouseDown={() => {
             canDrag.current = true
           }}
-          className="absolute top-1/2 -right-3 -mt-3 h-6 w-6 bg-black z-40"
-        />
+          className="absolute top-1/2 -right-[11px] -mt-3 h-6 w-6 z-40 flex justify-between py-[1.5px] px-[1px]"
+        >
+          {Array.from(Array(5)).map((_, key) => (
+            <span className="h-full w-[2px] border-r-2" key={key} />
+          ))}
+        </button>
       </aside>
     </div>
   )
