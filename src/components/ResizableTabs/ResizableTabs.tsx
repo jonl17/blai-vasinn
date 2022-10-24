@@ -28,9 +28,14 @@ export default function ResizableTabs({ children }: Props) {
         contentRef.current.style.width = `${offsetLeft}px`
       }
     }
+    const handleMouseUp = () => (canDrag.current = false)
     if (document) {
       document.addEventListener('mousemove', handleMouseMove)
-      return () => document.removeEventListener('mousemove', handleMouseMove)
+      document.addEventListener('mouseup', handleMouseUp)
+      return () => {
+        document.removeEventListener('mousemove', handleMouseMove)
+        document.removeEventListener('mouseup', handleMouseUp)
+      }
     }
   }, [])
 
@@ -54,8 +59,6 @@ export default function ResizableTabs({ children }: Props) {
           onMouseDown={() => {
             canDrag.current = true
           }}
-          onMouseUp={() => (canDrag.current = false)}
-          onMouseLeave={() => (canDrag.current = false)}
           className="absolute top-1/2 -right-3  h-6 w-6 bg-black z-40"
         ></button>
       </aside>
