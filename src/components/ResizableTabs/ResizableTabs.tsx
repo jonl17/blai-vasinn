@@ -20,12 +20,15 @@ export default function ResizableTabs({ children }: Props) {
         asideRef.current &&
         contentRef.current
       ) {
-        const offsetRight =
+        const asideWidth =
           containerRef.current.clientWidth -
           (e.clientX - containerRef.current.offsetLeft)
-        asideRef.current.style.width = `${offsetRight}px`
-        const offsetLeft = containerRef.current.clientWidth - offsetRight
-        contentRef.current.style.width = `${offsetLeft}px`
+        const contentWidth = containerRef.current.clientWidth - asideWidth
+
+        if (contentWidth - asideWidth > 0 && asideWidth > 100) {
+          asideRef.current.style.width = `${asideWidth}px`
+          contentRef.current.style.width = `${contentWidth}px`
+        }
       }
     }
     const handleMouseUp = () => (canDrag.current = false)
