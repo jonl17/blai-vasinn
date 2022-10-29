@@ -6,6 +6,7 @@ import {
   seoService,
 } from '@src/lib/sanityService'
 import { SanityType_page } from '@src/sanity-types'
+import { useRouter } from 'next/router'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const slugs = await allPageSlugsService()
@@ -43,6 +44,10 @@ type Props = {
 }
 
 const SlugPage: NextPage<Props> = ({ page }) => {
+  const { isFallback } = useRouter()
+
+  if (isFallback) return <p>loading</p>
+
   return <div>a sluggy named {page.title}</div>
 }
 

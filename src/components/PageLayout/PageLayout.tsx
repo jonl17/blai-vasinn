@@ -9,10 +9,6 @@ type Props = {
 }
 
 export default function PageLayout({ children, about }: Props) {
-  const { isFallback } = useRouter()
-
-  if (isFallback) return <p>Page not found</p>
-
   return (
     <main className="bg-white text-black flex">
       <Marquee items={Array.from(Array(75)).map((_, idx) => `${2022 - idx}`)} />

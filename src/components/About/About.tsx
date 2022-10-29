@@ -12,7 +12,7 @@ export default function About({ about }: Props) {
       <Text className="mb-2" as="h1" variant="large">
         um:
       </Text>
-      <RichText text={about.text ?? []} />
+      <RichText text={about?.text ?? []} />
     </section>
   )
 }
