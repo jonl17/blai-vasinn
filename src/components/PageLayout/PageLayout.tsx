@@ -11,7 +11,7 @@ type Props = {
 export default function PageLayout({ children, about }: Props) {
   const { isFallback } = useRouter()
 
-  if (!isFallback) return <p>Page not found</p>
+  if (isFallback) return <p>Page not found</p>
 
   return (
     <main className="bg-white text-black flex">
