@@ -13,10 +13,10 @@ export default function Navbar() {
   return (
     <nav className="h-28 border-b-2">
       <div className="flex h-full items-end px-5">
-        <div className="grid gap-5 grid-flow-col">
+        <div className="grid gap-4 grid-flow-col">
           {MOCK_MENU.map((item, key) => (
             <React.Fragment key={key}>
-              <Text className="pb-3 hover:text-blue" variant="large">
+              <Text className=" hover:text-blue" variant="large">
                 {item.label}
               </Text>
               {key !== MOCK_MENU.length - 1 && (

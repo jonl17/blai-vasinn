@@ -1,12 +1,15 @@
 import type { GetStaticProps, NextPage } from 'next'
-import { seoService } from '@src/lib/sanityService'
+import { aboutService, seoService } from '@src/lib/sanityService'
 import { Text } from '@src/components'
 
 export const getStaticProps: GetStaticProps = async () => {
   const seo = await seoService()
+  const about = await aboutService()
+
   return {
     props: {
       seo,
+      about,
     },
   }
 }

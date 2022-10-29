@@ -19,6 +19,9 @@ export default () =>
                 .child(
                   S.document().schemaType('mainMenu').documentId('mainMenu')
                 ),
+              S.listItem()
+                .title('About')
+                .child(S.document().schemaType('about').documentId('about')),
             ])
         ),
       S.divider(),
@@ -30,6 +33,8 @@ export default () =>
         .child(S.document().schemaType('homepage').documentId('homepage')),
       ...S.documentTypeListItems().filter(
         (listItem) =>
-          !['seo', 'mainMenu', 'page', 'homepage'].includes(listItem.getId())
+          !['seo', 'mainMenu', 'page', 'homepage', 'about'].includes(
+            listItem.getId()
+          )
       ),
     ])

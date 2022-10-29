@@ -4,3 +4,5 @@ export { default as PageLayout } from './PageLayout'
 export { default as Navbar } from './Navbar'
 export { default as Text } from './Text'
 export { default as ResizableTabs } from './ResizableTabs'
+export { default as RichText } from "./RichText"
+export { default as About } from "./About"

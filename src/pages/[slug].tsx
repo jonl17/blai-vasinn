@@ -1,10 +1,11 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import {
+  aboutService,
   allPageSlugsService,
   pageBySlugService,
   seoService,
 } from '@src/lib/sanityService'
-import { Page } from '@src/sanity-types'
+import { SanityType_page } from '@src/sanity-types'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const slugs = await allPageSlugsService()
@@ -36,7 +37,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 type Props = {
-  page: Page
+  page: SanityType_page
 }
 
 const SlugPage: NextPage<Props> = ({ page }) => {

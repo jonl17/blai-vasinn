@@ -41,7 +41,7 @@ export type {
  *
  *
  */
-export interface Seo extends SanityDocument {
+export interface SanityType_seo extends SanityDocument {
   _type: "seo";
 
   /**
@@ -64,7 +64,7 @@ export interface Seo extends SanityDocument {
  *
  *
  */
-export interface MainMenu extends SanityDocument {
+export interface SanityType_mainMenu extends SanityDocument {
   _type: "mainMenu";
 
   /**
@@ -86,7 +86,7 @@ export interface MainMenu extends SanityDocument {
        *
        *
        */
-      page?: SanityReference<Homepage | Page>;
+      page?: SanityReference<SanityType_homepage | SanityType_page>;
     }>
   >;
 }
@@ -96,7 +96,7 @@ export interface MainMenu extends SanityDocument {
  *
  *
  */
-export interface Page extends SanityDocument {
+export interface SanityType_page extends SanityDocument {
   _type: "page";
 
   /**
@@ -119,7 +119,7 @@ export interface Page extends SanityDocument {
  *
  *
  */
-export interface Homepage extends SanityDocument {
+export interface SanityType_homepage extends SanityDocument {
   _type: "homepage";
 
   /**
@@ -130,4 +130,25 @@ export interface Homepage extends SanityDocument {
   title?: string;
 }
 
-export type Documents = Seo | MainMenu | Page | Homepage;
+/**
+ * About
+ *
+ *
+ */
+export interface SanityType_about extends SanityDocument {
+  _type: "about";
+
+  /**
+   * Text — `array`
+   *
+   *
+   */
+  text?: Array<SanityKeyed<SanityBlock>>;
+}
+
+export type Documents =
+  | SanityType_seo
+  | SanityType_mainMenu
+  | SanityType_page
+  | SanityType_homepage
+  | SanityType_about;

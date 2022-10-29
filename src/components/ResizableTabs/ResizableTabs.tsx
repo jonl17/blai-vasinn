@@ -1,16 +1,25 @@
-import { useRef, useEffect } from 'react'
-import Text from '@src/components/Text'
+import { useRef, useEffect, useState } from 'react'
 
 type Props = {
   children: React.ReactNode
+  sidebarContent: React.ReactNode
 }
 
-export default function ResizableTabs({ children }: Props) {
+export default function ResizableTabs({ children, sidebarContent }: Props) {
   const canDrag = useRef(false)
   const asideRef = useRef<HTMLElement | null>(null)
   const containerRef = useRef<HTMLDivElement | null>(null)
   const dragBtnRef = useRef<HTMLButtonElement | null>(null)
   const contentRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    // set initial widths
+    if (asideRef.current && containerRef.current && contentRef.current) {
+      const initialContentWidth =
+        containerRef.current.clientWidth - asideRef.current.clientWidth
+      contentRef.current.style.width = `${initialContentWidth}px`
+    }
+  }, [])
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -46,22 +55,15 @@ export default function ResizableTabs({ children }: Props) {
     <div className="h-full w-full relative" ref={containerRef}>
       <aside
         ref={asideRef}
-        className="border-l-0 h-full w-[30%] absolute right-0 top-0 overflow-hidden pt-5"
+        className="border-l-0 h-full w-[600px] absolute right-0 top-0 overflow-hidden pt-5"
       >
-        <div className="w-[350px] p-5">
+        <div className="w-[550px] p-5">
           {/* sidebar contents */}
-          <Text variant="small">Side bar is here</Text>
-          <Text variant="small">Side bar is here</Text>
-          <Text variant="small">Side bar is here</Text>
-          <Text variant="small">Side bar is here</Text>
-          <Text variant="small">Side bar is here</Text>
-          <Text variant="small">Side bar is here</Text>
+          {sidebarContent}
         </div>
       </aside>
-      <aside
-        ref={contentRef}
-        className=" w-[70%] h-full absolute left-0 top-0 pt-5"
-      >
+
+      <aside ref={contentRef} className="h-full absolute left-0 top-0 pt-5">
         {/* page contents */}
         <div className="border-r-2 border-l-2 h-full p-5">{children}</div>
         <button
