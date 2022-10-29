@@ -28,10 +28,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const currentPage = await pageBySlugService(params.slug as string)
 
   const seo = await seoService()
+  const about = await aboutService()
   return {
     props: {
       seo,
       page: currentPage,
+      about,
     },
   }
 }
