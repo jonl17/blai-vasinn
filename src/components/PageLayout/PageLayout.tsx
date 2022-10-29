@@ -1,6 +1,7 @@
 import Marquee from '@src/components/Marquee'
 import { SanityType_about } from '@src/sanity-types'
 import { About, Navbar, ResizableTabs } from '@src/components'
+import { useRouter } from 'next/router'
 
 type Props = {
   children: React.ReactNode
@@ -8,6 +9,10 @@ type Props = {
 }
 
 export default function PageLayout({ children, about }: Props) {
+  const { isFallback } = useRouter()
+
+  if (!isFallback) return <p>Page not found</p>
+
   return (
     <main className="bg-white text-black flex">
       <Marquee items={Array.from(Array(75)).map((_, idx) => `${2022 - idx}`)} />
