@@ -10,5 +10,11 @@ export default {
       type: 'string',
       validation: (Rule) => Rule.required(),
     },
+    {
+      title: 'Components',
+      name: 'components',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'pocketInterview' }] }],
+    },
   ],
 }

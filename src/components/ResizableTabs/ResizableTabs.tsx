@@ -1,3 +1,4 @@
+import { useResizableTabs } from '@src/store/resizable-tabs'
 import { useRef, useEffect, useState } from 'react'
 
 type Props = {
@@ -12,12 +13,15 @@ export default function ResizableTabs({ children, sidebarContent }: Props) {
   const dragBtnRef = useRef<HTMLButtonElement | null>(null)
   const contentRef = useRef<HTMLDivElement | null>(null)
 
+  const { updateContentTabWidth } = useResizableTabs()
+
   useEffect(() => {
     // set initial widths
     if (asideRef.current && containerRef.current && contentRef.current) {
       const initialContentWidth =
         containerRef.current.clientWidth - asideRef.current.clientWidth
       contentRef.current.style.width = `${initialContentWidth}px`
+      updateContentTabWidth(initialContentWidth)
     }
   }, [])
 
@@ -37,6 +41,7 @@ export default function ResizableTabs({ children, sidebarContent }: Props) {
         if (contentWidth - asideWidth > 0 && asideWidth > 100) {
           asideRef.current.style.width = `${asideWidth}px`
           contentRef.current.style.width = `${contentWidth}px`
+          updateContentTabWidth(contentWidth)
         }
       }
     }
@@ -55,7 +60,7 @@ export default function ResizableTabs({ children, sidebarContent }: Props) {
     <div className="h-full w-full relative" ref={containerRef}>
       <aside
         ref={asideRef}
-        className="border-l-0 h-full w-[600px] absolute right-0 top-0 overflow-hidden pt-5"
+        className="border-l-0 h-full w-[550px] absolute right-0 top-0 overflow-hidden pt-5"
       >
         <div className="w-[550px] p-5">
           {/* sidebar contents */}
@@ -63,9 +68,15 @@ export default function ResizableTabs({ children, sidebarContent }: Props) {
         </div>
       </aside>
 
-      <aside ref={contentRef} className="h-full absolute left-0 top-0 pt-5">
+      <aside
+        id="resizable-window-content"
+        ref={contentRef}
+        className="h-full absolute left-0 top-0 pt-5"
+      >
         {/* page contents */}
-        <div className="border-r-2 border-l-2 h-full p-5">{children}</div>
+        <div className="border-r-2 border-l-2 h-full p-5 overflow-y-scroll scrollbar-hide">
+          {children}
+        </div>
         <button
           ref={dragBtnRef}
           onMouseDown={() => {

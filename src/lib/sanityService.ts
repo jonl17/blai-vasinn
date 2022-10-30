@@ -1,5 +1,6 @@
 import {
   SanityType_about,
+  SanityType_homepage,
   SanityType_page,
   SanityType_seo,
 } from '@src/sanity-types'
@@ -21,3 +22,15 @@ export const pageBySlugService = (slug: string): Promise<SanityType_page> =>
 
 export const aboutService = (): Promise<SanityType_about> =>
   client.fetch(`*[_type == "about"]`).then((val) => val[0])
+
+export const homepageService = (): Promise<SanityType_homepage> =>
+  client
+    .fetch(
+      `*[_type == "homepage"] {
+        ...,
+        components[] {
+          _type == 'reference' => @-> { ..., thumbnailImage { 'url': asset->url , alt, caption } }
+        }
+      }`
+    )
+    .then((val) => val[0])

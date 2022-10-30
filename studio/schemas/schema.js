@@ -9,9 +9,17 @@ import mainMenu from '../custom-types/singletons/main-menu'
 import page from '../custom-types/page'
 import homepage from '../custom-types/homepage'
 import about from '../custom-types/singletons/about'
+import pocketInterview from '../custom-types/pocketInterview'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   name: 'default',
-  types: schemaTypes.concat([seo, mainMenu, page, homepage, about]),
+  types: schemaTypes.concat([
+    seo,
+    mainMenu,
+    page,
+    homepage,
+    about,
+    pocketInterview,
+  ]),
 })

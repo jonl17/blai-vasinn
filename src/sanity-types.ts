@@ -128,6 +128,13 @@ export interface SanityType_homepage extends SanityDocument {
    *
    */
   title?: string;
+
+  /**
+   * Components — `array`
+   *
+   *
+   */
+  components?: Array<SanityKeyedReference<SanityType_pocketInterview>>;
 }
 
 /**
@@ -146,9 +153,66 @@ export interface SanityType_about extends SanityDocument {
   text?: Array<SanityKeyed<SanityBlock>>;
 }
 
+/**
+ * Pocket interview
+ *
+ *
+ */
+export interface SanityType_pocketInterview extends SanityDocument {
+  _type: "pocketInterview";
+
+  /**
+   * title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   *
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Thumbnail text — `text`
+   *
+   * This text has a limit of 280 characters.
+   */
+  thumbnailText?: string;
+
+  /**
+   * Thumbnail image — `image`
+   *
+   *
+   */
+  thumbnailImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+
+    /**
+     * Caption — `string`
+     *
+     *
+     */
+    caption?: string;
+
+    /**
+     * alt — `string`
+     *
+     *
+     */
+    alt?: string;
+  };
+}
+
 export type Documents =
   | SanityType_seo
   | SanityType_mainMenu
   | SanityType_page
   | SanityType_homepage
-  | SanityType_about;
+  | SanityType_about
+  | SanityType_pocketInterview;
