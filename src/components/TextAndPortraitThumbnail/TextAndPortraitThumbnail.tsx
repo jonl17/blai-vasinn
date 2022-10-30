@@ -26,7 +26,7 @@ export default function TextAndPortraitThumbnail({
   const sizeRatio = contentTabWidth / initialTabWidth
 
   return (
-    <section className="flex gap-7 place-content-center">
+    <section className="flex gap-7 place-content-center hover:text-blue">
       <div className="text-center">
         <div className="max-w-xl mx-auto">
           <Text
