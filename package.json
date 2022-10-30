@@ -9,7 +9,7 @@
     "lint": "next lint",
     "cmp": "npx hygen cmp new",
     "studio": "cd studio && npx @sanity/cli start",
-    "sanity-codegen": "cd studio && npx sanity-codegen && cd .."
+    "sanity-codegen": "cd studio && yarn && npx sanity-codegen && cd .."
   },
   "dependencies": {
     "@next/font": "^13.0.0",
