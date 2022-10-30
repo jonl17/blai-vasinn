@@ -20,6 +20,7 @@ export interface ITextProps {
   variant?: keyof typeof variants
   children?: ReactNode
   className?: string
+  style?: React.CSSProperties
 }
 
 const sizes: Record<keyof typeof variants, string> = /*tw*/ {
@@ -48,10 +49,12 @@ export const Text = ({
   as = 'p',
   className,
   variant,
+  style,
   ...restProps
 }: ITextProps) =>
   createElement(as, {
     className: getTextStyles({ variant }, className),
+    style,
     ...restProps,
   })
 
