@@ -60,7 +60,7 @@ export default function ResizableTabs({ children, sidebarContent }: Props) {
     <div className="h-full w-full relative" ref={containerRef}>
       <aside
         ref={asideRef}
-        className="border-l-0 h-full w-[550px] absolute right-0 top-0 overflow-hidden pt-5"
+        className="border-l-0 h-full w-[550px] absolute right-0 top-0 overflow-hidden"
       >
         <div className="w-[550px] p-5">
           {/* sidebar contents */}
@@ -71,11 +71,13 @@ export default function ResizableTabs({ children, sidebarContent }: Props) {
       <aside
         id="resizable-window-content"
         ref={contentRef}
-        className="h-full absolute left-0 top-0 pt-5"
+        className="h-full absolute left-0 top-0"
       >
         {/* page contents */}
-        <div className="border-r-2 border-l-2 h-full p-5 overflow-y-scroll scrollbar-hide">
+        <div className="h-full py-5 overflow-y-scroll scrollbar-hide">
+          <span className="absolute left-0 bottom-0 h-[97%] border-l-2" />
           {children}
+          <span className="absolute -right-[0.5px] bottom-0 h-[97%] border-l-2" />
         </div>
         <button
           ref={dragBtnRef}

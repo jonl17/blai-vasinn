@@ -34,10 +34,7 @@ type HomepageProps = {
 type ComponentTypes = SanityType_pocketInterview
 
 const Home: NextPage<HomepageProps> = ({ homepage }) => {
-  console.log(homepage)
   const components = homepage.components ?? ([] as Array<ComponentTypes>)
-
-  console.log(components)
 
   const componentMap = (
     cmp: ComponentTypes | SanityKeyedReference<SanityType_pocketInterview>

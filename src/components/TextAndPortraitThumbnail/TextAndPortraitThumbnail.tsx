@@ -1,8 +1,9 @@
 import { ImageType } from '@src/types'
 import { Text } from '@src/components'
 import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { useResizableTabs } from '@src/store/resizable-tabs'
+import cn from 'classnames'
 
 type Props = {
   label: string
@@ -20,13 +21,16 @@ export default function TextAndPortraitThumbnail({
   url,
 }: Props) {
   const { contentTabWidth } = useResizableTabs()
-
   const initialTabWidth = 880
-
   const sizeRatio = contentTabWidth / initialTabWidth
+  const [active, setActive] = useState(false)
 
   return (
-    <section className="flex gap-7 place-content-center hover:text-blue">
+    <section
+      onMouseEnter={() => setActive(true)}
+      onMouseLeave={() => setActive(false)}
+      className="flex gap-7 place-content-center hover:text-blue"
+    >
       <div className="text-center">
         <div className="max-w-xl mx-auto">
           <Text
@@ -62,14 +66,16 @@ export default function TextAndPortraitThumbnail({
       </div>
       <div
         style={{
-          height: `${300 * sizeRatio}px`,
+          width: `${250 * sizeRatio}px`,
         }}
-        className="aspect-[10/13] min-w-[150px] relative rounded-[50%] overflow-hidden mt-5"
+        className="aspect-[3/4] min-w-[150px] h-[25%] relative rounded-[50%] overflow-hidden mt-5"
       >
         <Image
-          className="object-cover grayscale w-full h-full"
+          className={cn('object-cover w-full h-full', {
+            'blue-image-filter': active,
+          })}
           fill
-          src={portrait.url}
+          src={portrait.url + '?sat=-100'}
           alt={portrait.alt ?? ''}
         />
       </div>

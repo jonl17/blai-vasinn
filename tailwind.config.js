@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
@@ -29,5 +31,14 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addUtilities }) => {
+      addUtilities({
+        '.blue-image-filter': {
+          filter:
+            'invert(8%) sepia(97%) saturate(7490%) hue-rotate(197deg) brightness(100%) contrast(143%)',
+        },
+      })
+    }),
+  ],
 }
