@@ -61,8 +61,10 @@ export default function TextAndPortraitThumbnail({
         </div>
       </div>
       <div
-        style={{ width: `${300 * sizeRatio}px` }}
-        className="aspect-[10/13] h-[45%] relative rounded-[50%] overflow-hidden mt-5"
+        style={{
+          height: `${300 * sizeRatio}px`,
+        }}
+        className="aspect-[10/13] min-w-[150px] relative rounded-[50%] overflow-hidden mt-5"
       >
         <Image
           className="object-cover grayscale w-full h-full"
