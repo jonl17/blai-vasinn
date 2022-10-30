@@ -52,6 +52,7 @@ const Home: NextPage<HomepageProps> = ({ homepage }) => {
             portrait={{
               alt: cmp.thumbnailImage?.alt ?? '',
               caption: cmp.thumbnailImage?.caption ?? '',
+              // @ts-ignore
               url: cmp.thumbnailImage?.url ?? '',
             }}
             url={cmp.slug?.current ?? ''}

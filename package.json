@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "cd studio && npx sanity-codegen && cd .. && next dev",
-    "build": "next build",
+    "build": "cd studio && npx sanity-codegen && cd .. && next build",
     "start": "next start",
     "lint": "next lint",
     "cmp": "npx hygen cmp new",
