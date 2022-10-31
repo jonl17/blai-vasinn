@@ -16,7 +16,7 @@ export default function Navbar() {
         <div className="grid gap-4 grid-flow-col">
           {MOCK_MENU.map((item, key) => (
             <React.Fragment key={key}>
-              <Text className=" hover:text-blue" variant="large">
+              <Text className=" hover:text-blue text-[3.5vw]" variant="large">
                 {item.label}
               </Text>
               {key !== MOCK_MENU.length - 1 && (

@@ -68,11 +68,16 @@ export default function TextAndPortraitThumbnail({
         style={{
           width: `${250 * sizeRatio}px`,
         }}
-        className="aspect-[3/4] min-w-[150px] h-[25%] relative rounded-[50%] overflow-hidden mt-5"
+        className={cn(
+          'aspect-[3/4] min-w-[150px] h-[25%] relative rounded-[50%] overflow-hidden mt-5',
+          {
+            'bg-blue': active,
+          }
+        )}
       >
         <Image
           className={cn('object-cover w-full h-full', {
-            'blue-image-filter': active,
+            'mix-blend-lighten': active,
           })}
           fill
           src={portrait.url + '?sat=-100'}

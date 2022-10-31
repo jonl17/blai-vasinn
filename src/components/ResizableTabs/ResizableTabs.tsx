@@ -38,7 +38,7 @@ export default function ResizableTabs({ children, sidebarContent }: Props) {
           (e.clientX - containerRef.current.offsetLeft)
         const contentWidth = containerRef.current.clientWidth - asideWidth
 
-        if (contentWidth - asideWidth > 0 && asideWidth > 100) {
+        if (contentWidth - asideWidth > 0 && asideWidth > 25) {
           asideRef.current.style.width = `${asideWidth}px`
           contentRef.current.style.width = `${contentWidth}px`
           updateContentTabWidth(contentWidth)

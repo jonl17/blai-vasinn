@@ -7,3 +7,4 @@ export { default as ResizableTabs } from './ResizableTabs'
 export { default as RichText } from "./RichText"
 export { default as About } from "./About"
 export { default as TextAndPortraitThumbnail } from "./TextAndPortraitThumbnail"
+export { default as Table } from "./Table"
