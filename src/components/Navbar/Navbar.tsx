@@ -16,7 +16,7 @@ export default function Navbar() {
         <div className="grid gap-4 grid-flow-col">
           {MOCK_MENU.map((item, key) => (
             <React.Fragment key={key}>
-              <Text className=" hover:text-blue" variant="large">
+              <Text className=" hover:text-blue" variant="dynamicLarge">
                 {item.label}
               </Text>
               {key !== MOCK_MENU.length - 1 && (
@@ -25,9 +25,7 @@ export default function Navbar() {
             </React.Fragment>
           ))}
         </div>
-        <div className="border mb-3 ml-3 flex-1 rounded-lg h-10">
-          searchbox here
-        </div>
+        <div className="border-2 mb-3 ml-3 flex-1 rounded-lg h-10"></div>
       </div>
     </nav>
   )

@@ -6,12 +6,15 @@ import {
 } from '@src/lib/sanityService'
 import {
   SanityType_homepage,
-  SanityType_pocketInterview,
+  SanityType_interview,
   SanityKeyedReference,
+  SanityType_artistText,
+  SanityType_conversation,
 } from '@src/sanity-types'
 import TextAndPortraitThumbnail from '@src/components/TextAndPortraitThumbnail'
-import { ImageType } from '@src/types'
 import React from 'react'
+import { BasicThumbnail } from '@src/components'
+import { ImageType } from '@src/types'
 
 export const getStaticProps: GetStaticProps = async () => {
   const seo = await seoService()
@@ -31,38 +34,78 @@ type HomepageProps = {
   homepage: SanityType_homepage
 }
 
-type ComponentTypes = SanityType_pocketInterview
+type ComponentTypes =
+  | SanityType_interview
+  | SanityType_artistText
+  | SanityType_conversation
 
 const Home: NextPage<HomepageProps> = ({ homepage }) => {
   const components = homepage.components ?? ([] as Array<ComponentTypes>)
 
   const componentMap = (
-    cmp: ComponentTypes | SanityKeyedReference<SanityType_pocketInterview>
+    cmp: {
+      document: ComponentTypes | SanityKeyedReference<SanityType_interview>
+      thumbnailLabel: string
+    },
+    key: number
   ) => {
-    switch (cmp._type) {
-      case 'pocketInterview': {
+    switch (cmp.document._type) {
+      case 'interview': {
         return (
           <TextAndPortraitThumbnail
-            label="Vasaviðtal"
-            title={cmp.title ?? ''}
-            text={cmp.thumbnailText ?? ''}
+            label={cmp.thumbnailLabel}
+            title={cmp.document.title ?? ''}
+            text={cmp.document.thumbnailText ?? ''}
             portrait={{
-              alt: cmp.thumbnailImage?.alt ?? '',
-              caption: cmp.thumbnailImage?.caption ?? '',
+              alt: cmp.document.thumbnailImage?.alt ?? '',
+              caption: cmp.document.thumbnailImage?.caption ?? '',
               // @ts-ignore
-              url: cmp.thumbnailImage?.url ?? '',
+              url: cmp.document.thumbnailImage?.url ?? '',
             }}
-            url={cmp.slug?.current ?? ''}
+            url={cmp.document.slug?.current ?? ''}
           />
         )
       }
+      case 'artistText': {
+        return (
+          <BasicThumbnail
+            label={cmp.thumbnailLabel ?? ''}
+            title={cmp.document.title ?? ''}
+            image={{
+              alt: cmp.document.thumbnailImage?.alt ?? '',
+              caption: cmp.document.thumbnailImage?.caption ?? '',
+              // @ts-ignore
+              url: cmp.document.thumbnailImage?.url ?? '',
+            }}
+            url={cmp.document.slug?.current ?? ''}
+          />
+        )
+      }
+      // case 'conversation': {
+      //   return (
+      //     <BasicThumbnail
+      //       variant="thin"
+      //       label={cmp.thumbnailLabel ?? ''}
+      //       title={cmp.document.title ?? ''}
+      //       image={{
+      //         alt: cmp.document.thumbnailImage?.alt ?? '',
+      //         caption: cmp.document.thumbnailImage?.caption ?? '',
+      //         // @ts-ignore
+      //         url: cmp.document.thumbnailImage?.url ?? '',
+      //       }}
+      //       url={cmp.document.slug?.current ?? ''}
+      //     />
+      //   )
+      // }
     }
   }
 
   return (
-    <div className="px-12 w-full">
+    <div className="px-12 w-full d-flex flex-wrap">
       {components.map((cmp, key) => (
-        <React.Fragment key={key}>{componentMap(cmp)}</React.Fragment>
+        <React.Fragment key={key}>
+          {componentMap(cmp as any, key)}
+        </React.Fragment>
       ))}
     </div>
   )

@@ -9,7 +9,9 @@ import mainMenu from '../custom-types/singletons/main-menu'
 import page from '../custom-types/page'
 import homepage from '../custom-types/homepage'
 import about from '../custom-types/singletons/about'
-import pocketInterview from '../custom-types/pocketInterview'
+import interview from '../custom-types/documents/interview'
+import artistText from '../custom-types/documents/artist-text'
+import conversation from '../custom-types/documents/conversation'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -20,6 +22,8 @@ export default createSchema({
     page,
     homepage,
     about,
-    pocketInterview,
+    interview,
+    artistText,
+    conversation,
   ]),
 })

@@ -24,12 +24,13 @@ export interface ITextProps {
 }
 
 const sizes: Record<keyof typeof variants, string> = /*tw*/ {
-  /**
+  /*
    * Define mobile and desktop text sizes
    */
   large: 'text-50/52',
   medium: 'text-29/32',
   small: 'text-18/20.5',
+  dynamicLarge: 'text-3vw/1',
 }
 
 export type GetTextStylesProps = Pick<ITextProps, 'variant'>
@@ -38,6 +39,7 @@ const variants = {
   large: `${ClarendonRegular.className} uppercase`,
   medium: GraebenbachRegular.className,
   small: GraebenbachMonoRegular.className,
+  dynamicLarge: `${ClarendonRegular.className} uppercase`,
 }
 
 export const getTextStyles = (

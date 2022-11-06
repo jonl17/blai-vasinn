@@ -32,10 +32,46 @@ export default () =>
         .title('Homepage')
         .child(S.document().schemaType('homepage').documentId('homepage')),
       S.divider(),
+      S.listItem()
+        .title('Documents')
+        .child(
+          S.list()
+            .title('Documents')
+            .items([
+              S.listItem()
+                .title('Viðtal')
+                .child(
+                  S.documentList()
+                    .title('Viðtal')
+                    .filter('_type == "interview"')
+                ),
+              S.listItem()
+                .title('Eigin skrif')
+                .child(
+                  S.documentList()
+                    .title('Eigin skrif')
+                    .filter('_type == "artistText"')
+                ),
+              S.listItem()
+                .title('Samtal')
+                .child(
+                  S.documentList()
+                    .title('Samtal')
+                    .filter('_type == "conversation"')
+                ),
+            ])
+        ),
       ...S.documentTypeListItems().filter(
         (listItem) =>
-          !['seo', 'mainMenu', 'page', 'homepage', 'about'].includes(
-            listItem.getId()
-          )
+          ![
+            'seo',
+            'mainMenu',
+            'page',
+            'homepage',
+            'about',
+            'interview',
+            'artistText',
+            'conversation',
+          ].includes(listItem.getId())
       ),
     ])

@@ -2,7 +2,7 @@ import { ImageType } from '@src/types'
 import { Text } from '@src/components'
 import Image from 'next/image'
 import { useState } from 'react'
-import { useResizableTabs } from '@src/store/resizable-tabs'
+import { useResizableTabs, useSizeRatio } from '@src/store/resizable-tabs'
 import cn from 'classnames'
 
 type Props = {
@@ -20,19 +20,18 @@ export default function TextAndPortraitThumbnail({
   portrait,
   url,
 }: Props) {
-  const { contentTabWidth } = useResizableTabs()
-  const initialTabWidth = 880
-  const sizeRatio = contentTabWidth / initialTabWidth
+  const sizeRatio = useSizeRatio()
+
   const [active, setActive] = useState(false)
 
   return (
-    <section
-      onMouseEnter={() => setActive(true)}
-      onMouseLeave={() => setActive(false)}
-      className="flex gap-7 place-content-center hover:text-blue"
-    >
-      <div className="text-center">
-        <div className="max-w-xl mx-auto">
+    <section className="flex gap-7 place-content-center">
+      <div
+        className="text-center hover:text-blue"
+        onMouseEnter={() => setActive(true)}
+        onMouseLeave={() => setActive(false)}
+      >
+        <div className="max-w-2xl mx-auto">
           <Text
             style={{
               fontSize: `${18 * sizeRatio}px`,
@@ -61,7 +60,6 @@ export default function TextAndPortraitThumbnail({
           >
             {text}
           </Text>
-          {JSON.stringify(contentTabWidth / initialTabWidth)}
         </div>
       </div>
       <div

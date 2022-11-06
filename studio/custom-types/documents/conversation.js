@@ -1,6 +1,6 @@
 export default {
-  title: 'Pocket interview',
-  name: 'pocketInterview',
+  title: 'Samtal',
+  name: 'conversation',
   type: 'document',
   fields: [
     {
@@ -18,14 +18,6 @@ export default {
         slugify: (input) =>
           input.toLowerCase().replace(/\s+/g, '-').slice(0, 200),
       },
-    },
-    {
-      title: 'Thumbnail text',
-      name: 'thumbnailText',
-      type: 'text',
-      description: 'This text has a limit of 280 characters.',
-      validation: (Rule) =>
-        Rule.required().min(10).max(280).warning('Text is too long!'),
     },
     {
       title: 'Thumbnail image',

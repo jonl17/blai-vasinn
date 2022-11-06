@@ -134,7 +134,25 @@ export interface SanityType_homepage extends SanityDocument {
    *
    *
    */
-  components?: Array<SanityKeyedReference<SanityType_pocketInterview>>;
+  components?: Array<
+    SanityKeyed<{
+      /**
+       * Thumbnail label — `string`
+       *
+       *
+       */
+      thumbnailLabel?: string;
+
+      /**
+       * Document — `reference`
+       *
+       *
+       */
+      document?: SanityReference<
+        SanityType_interview | SanityType_artistText | SanityType_conversation
+      >;
+    }>
+  >;
 }
 
 /**
@@ -154,12 +172,12 @@ export interface SanityType_about extends SanityDocument {
 }
 
 /**
- * Pocket interview
+ * Viðtal
  *
  *
  */
-export interface SanityType_pocketInterview extends SanityDocument {
-  _type: "pocketInterview";
+export interface SanityType_interview extends SanityDocument {
+  _type: "interview";
 
   /**
    * title — `string`
@@ -209,10 +227,110 @@ export interface SanityType_pocketInterview extends SanityDocument {
   };
 }
 
+/**
+ * Eigin skrif
+ *
+ *
+ */
+export interface SanityType_artistText extends SanityDocument {
+  _type: "artistText";
+
+  /**
+   * title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   *
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Thumbnail image — `image`
+   *
+   *
+   */
+  thumbnailImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+
+    /**
+     * Caption — `string`
+     *
+     *
+     */
+    caption?: string;
+
+    /**
+     * alt — `string`
+     *
+     *
+     */
+    alt?: string;
+  };
+}
+
+/**
+ * Samtal
+ *
+ *
+ */
+export interface SanityType_conversation extends SanityDocument {
+  _type: "conversation";
+
+  /**
+   * title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   *
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Thumbnail image — `image`
+   *
+   *
+   */
+  thumbnailImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+
+    /**
+     * Caption — `string`
+     *
+     *
+     */
+    caption?: string;
+
+    /**
+     * alt — `string`
+     *
+     *
+     */
+    alt?: string;
+  };
+}
+
 export type Documents =
   | SanityType_seo
   | SanityType_mainMenu
   | SanityType_page
   | SanityType_homepage
   | SanityType_about
-  | SanityType_pocketInterview;
+  | SanityType_interview
+  | SanityType_artistText
+  | SanityType_conversation;

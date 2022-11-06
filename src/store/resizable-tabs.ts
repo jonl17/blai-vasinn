@@ -7,6 +7,8 @@ interface Props {
   updateSidebarTabWidth: (n: number) => void
 }
 
+const initalContentTabWidth = 880
+
 export const useResizableTabs = create<Props>((set) => ({
   contentTabWidth: 0,
   sidebarTabWidth: 0,
@@ -19,3 +21,6 @@ export const useResizableTabs = create<Props>((set) => ({
       sidebarTabWidth,
     }),
 }))
+
+export const useSizeRatio = () =>
+  useResizableTabs((store) => store.contentTabWidth / initalContentTabWidth)

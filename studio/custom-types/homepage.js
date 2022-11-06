@@ -14,7 +14,35 @@ export default {
       title: 'Components',
       name: 'components',
       type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'pocketInterview' }] }],
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              title: 'Thumbnail label',
+              name: 'thumbnailLabel',
+              type: 'string',
+            },
+            {
+              title: 'Document',
+              name: 'document',
+              type: 'reference',
+              to: [
+                { type: 'interview' },
+                { type: 'artistText' },
+                { type: 'conversation' },
+              ],
+            },
+          ],
+          preview: {
+            select: {
+              title: 'document.title',
+              subtitle: 'thumbnailLabel',
+              media: 'document.thumbnailImage',
+            },
+          },
+        },
+      ],
     },
   ],
 }

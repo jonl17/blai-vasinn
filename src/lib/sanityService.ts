@@ -27,10 +27,14 @@ export const homepageService = (): Promise<SanityType_homepage> =>
   client
     .fetch(
       `*[_type == "homepage"] {
-        ...,
-        components[] {
-          _type == 'reference' => @-> { ..., thumbnailImage { 'url': asset->url , alt, caption } }
-        }
-      }`
+        ...,       
+          components[] {
+            thumbnailLabel,
+              document {
+        
+            _type == 'reference' => @-> { ..., thumbnailImage { 'url': asset->url , alt, caption } }
+          }
+       }
+     }`
     )
     .then((val) => val[0])
