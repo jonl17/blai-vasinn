@@ -3,23 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "yarn sanity-codegen && next dev",
-    "build": "yarn sanity-codegen && next build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cmp": "npx hygen cmp new",
-    "studio": "cd studio && npx @sanity/cli start",
-    "sanity-codegen": "cd studio && yarn && npx sanity-codegen && cd .."
+    "cmp": "npx hygen cmp new"
   },
   "dependencies": {
     "@next/font": "^13.0.0",
     "@portabletext/react": "^1.0.6",
     "classnames": "^2.3.2",
     "next": "^13.0.0",
-    "next-sanity": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sanity-codegen": "^0.9.8",
     "zustand": "^4.1.3"
   },
   "devDependencies": {

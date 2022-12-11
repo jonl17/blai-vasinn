@@ -1,21 +1,10 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import {
-  aboutService,
-  allPageSlugsService,
-  pageBySlugService,
-  seoService,
-} from '@src/lib/sanityService'
-import { SanityType_page } from '@src/sanity-types'
 import { useRouter } from 'next/router'
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const slugs = await allPageSlugsService()
-
   return {
     fallback: false,
-    paths: slugs.map((item) => ({
-      params: { slug: item.slug?.current },
-    })),
+    paths: [],
   }
 }
 
@@ -26,29 +15,19 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
   }
 
-  const currentPage = await pageBySlugService(params.slug as string)
-
-  const seo = await seoService()
-  const about = await aboutService()
   return {
     props: {
-      seo,
-      page: currentPage,
-      about,
+      test: 'fredo',
     },
   }
 }
 
-type Props = {
-  page: SanityType_page
-}
-
-const SlugPage: NextPage<Props> = ({ page }) => {
+const SlugPage: NextPage = () => {
   const { isFallback } = useRouter()
 
   if (isFallback) return <p>loading</p>
 
-  return <div>a sluggy named {page.title}</div>
+  return <div>a sluggy named jeff bassoos</div>
 }
 
 export default SlugPage
