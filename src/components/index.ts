@@ -8,3 +8,4 @@ export { default as RichText } from './RichText'
 export { default as About } from './About'
 export { default as TextAndPortraitThumbnail } from './TextAndPortraitThumbnail'
 export { default as BasicThumbnail } from './BasicThumbnail'
+export { default as SliceMachine } from "./SliceMachine"
