@@ -7,7 +7,52 @@ type Simplify<T> = {
     [KeyType in keyof T]: T[KeyType];
 };
 /** Content for homepage documents */
-type HomepageDocumentData = Record<string, never>;
+interface HomepageDocumentData {
+    /**
+     * title field in *homepage*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: homepage.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * seo title field in *homepage*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: homepage.seo_title
+     * - **Tab**: seo
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    seo_title: prismicT.KeyTextField;
+    /**
+     * seo description field in *homepage*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: homepage.seo_description
+     * - **Tab**: seo
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    seo_description: prismicT.KeyTextField;
+    /**
+     * seo image field in *homepage*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: homepage.seo_image
+     * - **Tab**: seo
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    seo_image: prismicT.ImageField<never>;
+}
 /**
  * homepage document from Prismic
  *

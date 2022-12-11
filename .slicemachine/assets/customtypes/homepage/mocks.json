@@ -10,5 +10,18 @@
   "linked_documents": [],
   "lang": "en-us",
   "alternate_languages": [],
-  "data": {}
+  "data": {
+    "title": "once",
+    "seo_title": "climb",
+    "seo_description": "sat",
+    "seo_image": {
+      "dimensions": {
+        "width": 1200,
+        "height": 630
+      },
+      "alt": null,
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+    }
+  }
 }

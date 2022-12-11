@@ -82,6 +82,9 @@ export default function ResizableTabs({ children, sidebarContent }: Props) {
           className="absolute top-1/2 -right-[11px] -mt-3 h-6 w-6 z-40 flex justify-between py-[1.5px] px-[1px]"
         >
           {Array.from(Array(5)).map((_, key) => (
+            // the middle line sometimes, on some
+            // browser doesn't go straight on the line
+            // so we just hide it.
             <span
               className={cn('h-full w-[2px] border-r-2', {
                 'opacity-0': key === 2,

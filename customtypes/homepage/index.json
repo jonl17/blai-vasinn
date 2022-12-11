@@ -4,6 +4,41 @@
   "repeatable": false,
   "status": true,
   "json": {
-    "Main": {}
+    "Main": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "title",
+          "placeholder": ""
+        }
+      }
+    },
+    "seo": {
+      "seo_title": {
+        "type": "Text",
+        "config": {
+          "label": "seo title",
+          "placeholder": ""
+        }
+      },
+      "seo_description": {
+        "type": "Text",
+        "config": {
+          "label": "seo description",
+          "placeholder": ""
+        }
+      },
+      "seo_image": {
+        "type": "Image",
+        "config": {
+          "label": "seo image",
+          "constraint": {
+            "width": 1200,
+            "height": 630
+          },
+          "thumbnails": []
+        }
+      }
+    }
   }
 }
