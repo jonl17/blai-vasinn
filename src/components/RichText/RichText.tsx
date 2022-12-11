@@ -1,7 +1,6 @@
 import { PortableText, PortableTextReactComponents } from '@portabletext/react'
 import { SanityBlock } from 'sanity-codegen/types'
 import { Text } from '@src/components'
-import { GraebenbachMonoRegular } from '@src/pages/_app'
 import cn from 'classnames'
 
 type Props = {
@@ -12,10 +11,7 @@ const components: Partial<PortableTextReactComponents> = {
   marks: {
     link: ({ value, children }) => (
       <a href={value?.href}>
-        <Text
-          as="span"
-          className={cn('text-blue', GraebenbachMonoRegular.className)}
-        >
+        <Text as="span" className={cn('text-blue font-graebenbachMonoRegular')}>
           {children}
         </Text>
       </a>

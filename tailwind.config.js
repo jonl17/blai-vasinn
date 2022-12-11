@@ -4,6 +4,13 @@ const plugin = require('tailwindcss/plugin')
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    fontFamily: {
+      clarendonRegular: ['Clarendon Regular'],
+      clarendonBold: ['Clarendon Bold'],
+      graebenbachRegular: ['Graebenbach Regular'],
+      graebenbachRegularItalic: ['Graebenbach Regular Italic'],
+      graebenbachMonoRegular: ['Graebenbach Mono Regular'],
+    },
     colors: {
       white: 'rgb(255,255,230)',
       blue: 'rgb(0,0,255)',

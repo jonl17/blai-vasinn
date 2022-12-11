@@ -1,12 +1,4 @@
 import { createElement, ElementType, ReactNode } from 'react'
-import {
-  GraebenbachMonoRegular,
-  GraebenbachRegular,
-  GraebenbachRegularItalic,
-  ClarendonBold,
-  ClarendonRegular,
-} from '@src/pages/_app'
-
 import cn from 'classnames'
 
 export interface ITextProps {
@@ -36,10 +28,10 @@ const sizes: Record<keyof typeof variants, string> = /*tw*/ {
 export type GetTextStylesProps = Pick<ITextProps, 'variant'>
 
 const variants = {
-  large: `${ClarendonRegular.className} uppercase`,
-  medium: GraebenbachRegular.className,
-  small: GraebenbachMonoRegular.className,
-  dynamicLarge: `${ClarendonRegular.className} uppercase`,
+  large: 'font-clarendonRegular uppercase',
+  medium: 'font-graebenbachRegular',
+  small: 'font-graebenbachMonoRegular',
+  dynamicLarge: `font-clarendonRegular uppercase`,
 }
 
 export const getTextStyles = (

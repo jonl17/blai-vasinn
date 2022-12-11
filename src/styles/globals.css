@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Graebenbach Regular';
+  src: url('../../public/fonts/Graebenbach-Regular.woff');
+}
+@font-face {
+  font-family: 'Graebenbach Regular Italic';
+  src: url('../../public/fonts/Graebenbach-RegularItalic.woff');
+}
+
+@font-face {
+  font-family: 'Graebenbach Mono Regular';
+  src: url('../../public/fonts/GraebenbachMono-Regular.woff');
+}
+
+@font-face {
+  font-family: 'Clarendon Bold';
+  src: url('../../public/fonts/clarendon-bold.woff2');
+}
+
+@font-face {
+  font-family: 'Clarendon Regular';
+  src: url('../../public/fonts/clarendon-regular.woff2');
+}
+
 /* For Webkit-based browsers (Chrome, Safari and Opera) */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
