@@ -1,5 +1,6 @@
 import { useResizableTabs } from '@src/store/resizable-tabs'
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect } from 'react'
+import cn from 'classnames'
 
 type Props = {
   children: React.ReactNode
@@ -81,7 +82,12 @@ export default function ResizableTabs({ children, sidebarContent }: Props) {
           className="absolute top-1/2 -right-[11px] -mt-3 h-6 w-6 z-40 flex justify-between py-[1.5px] px-[1px]"
         >
           {Array.from(Array(5)).map((_, key) => (
-            <span className="h-full w-[2px] border-r-2" key={key} />
+            <span
+              className={cn('h-full w-[2px] border-r-2', {
+                'opacity-0': key === 2,
+              })}
+              key={key}
+            />
           ))}
         </button>
       </aside>
