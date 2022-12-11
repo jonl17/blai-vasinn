@@ -78,7 +78,7 @@ export default function TextAndPortraitThumbnail({
             'mix-blend-lighten': active,
           })}
           fill
-          src={portrait.url + '?sat=-100'}
+          src={portrait.url}
           alt={portrait.alt ?? ''}
         />
       </div>
