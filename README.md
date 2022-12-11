@@ -20,7 +20,7 @@
 
 ## Server-side API
 
-- Built using Node.js and Express
+- Built using Next.js API routes
 - Provides endpoints for submitting and managing documents
 - Stores submitted documents in a database or other persistence layer
 
