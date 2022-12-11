@@ -16,16 +16,6 @@ export default function ResizableTabs({ children, sidebarContent }: Props) {
   const { updateContentTabWidth } = useResizableTabs()
 
   useEffect(() => {
-    // set initial widths
-    if (asideRef.current && containerRef.current && contentRef.current) {
-      const initialContentWidth =
-        containerRef.current.clientWidth - asideRef.current.clientWidth
-      contentRef.current.style.width = `${initialContentWidth}px`
-      updateContentTabWidth(initialContentWidth)
-    }
-  }, [])
-
-  useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (
         canDrag.current &&
@@ -33,15 +23,19 @@ export default function ResizableTabs({ children, sidebarContent }: Props) {
         asideRef.current &&
         contentRef.current
       ) {
-        const asideWidth =
-          containerRef.current.clientWidth -
-          (e.clientX - containerRef.current.offsetLeft)
-        const contentWidth = containerRef.current.clientWidth - asideWidth
+        const container = containerRef.current
+        const leftTab = contentRef.current
+        const rightTab = asideRef.current
 
-        if (contentWidth - asideWidth > 0 && asideWidth > 25) {
-          asideRef.current.style.width = `${asideWidth}px`
-          contentRef.current.style.width = `${contentWidth}px`
-          updateContentTabWidth(contentWidth)
+        const rightTabWidth =
+          container.clientWidth - (e.clientX - container.offsetLeft)
+        const leftTabWidth = container.clientWidth - rightTabWidth
+        const containerWidth = container.clientWidth
+
+        if (leftTabWidth - rightTabWidth > 0 && rightTabWidth > 25) {
+          rightTab.style.width = `${(rightTabWidth / containerWidth) * 100}%`
+          leftTab.style.width = `${(leftTabWidth / containerWidth) * 100}%`
+          updateContentTabWidth(leftTabWidth)
         }
       }
     }
@@ -60,7 +54,7 @@ export default function ResizableTabs({ children, sidebarContent }: Props) {
     <div className="h-full w-full relative" ref={containerRef}>
       <aside
         ref={asideRef}
-        className="border-l-0 h-full w-[550px] absolute right-0 top-0 overflow-hidden"
+        className="border-l-0 h-full w-1/4 absolute right-0 top-0 overflow-hidden"
       >
         <div className="w-[550px] p-5">
           {/* sidebar contents */}
@@ -71,7 +65,7 @@ export default function ResizableTabs({ children, sidebarContent }: Props) {
       <aside
         id="resizable-window-content"
         ref={contentRef}
-        className="h-full absolute left-0 top-0"
+        className="h-full absolute left-0 top-0 w-3/4"
       >
         {/* page contents */}
         <div className="h-full py-5 overflow-y-scroll scrollbar-hide">
