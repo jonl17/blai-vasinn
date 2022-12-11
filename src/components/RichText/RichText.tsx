@@ -1,10 +1,9 @@
 import { PortableText, PortableTextReactComponents } from '@portabletext/react'
-import { SanityBlock } from 'sanity-codegen/types'
 import { Text } from '@src/components'
 import cn from 'classnames'
 
 type Props = {
-  text: SanityBlock[]
+  text: any
 }
 
 const components: Partial<PortableTextReactComponents> = {
