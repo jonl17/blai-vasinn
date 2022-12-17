@@ -6,6 +6,52 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
     [KeyType in keyof T]: T[KeyType];
 };
+/** Content for artist documents */
+interface ArtistDocumentData {
+    /**
+     * full name field in *artist*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: artist.fname
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    fname: prismicT.KeyTextField;
+    /**
+     * year of birth field in *artist*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: artist.year_of_birth
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    year_of_birth: prismicT.NumberField;
+    /**
+     * year of death field in *artist*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: this one is optional (of course)
+     * - **API ID Path**: artist.year_of_death
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    year_of_death: prismicT.NumberField;
+}
+/**
+ * artist document from Prismic
+ *
+ * - **API ID**: `artist`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ArtistDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ArtistDocumentData>, "artist", Lang>;
 /** Content for homepage documents */
 interface HomepageDocumentData {
     /**
@@ -98,12 +144,12 @@ interface SiteSettingsDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type SiteSettingsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SiteSettingsDocumentData>, "site_settings", Lang>;
-export type AllDocumentTypes = HomepageDocument | SiteSettingsDocument;
+export type AllDocumentTypes = ArtistDocument | HomepageDocument | SiteSettingsDocument;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomepageDocumentData, HomepageDocument, SiteSettingsDocumentData, SiteSettingsDocument, AllDocumentTypes };
+        export type { ArtistDocumentData, ArtistDocument, HomepageDocumentData, HomepageDocument, SiteSettingsDocumentData, SiteSettingsDocument, AllDocumentTypes };
     }
 }

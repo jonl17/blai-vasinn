@@ -2,6 +2,7 @@ import { createClient } from '../../../prismicio'
 import { RTNode } from '@prismicio/types'
 import { RichText, Text } from '@src/components'
 import { useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 
 export default function About() {
   const [text, setText] = useState<[RTNode]>()
@@ -17,14 +18,18 @@ export default function About() {
     fetchData()
   }, [])
 
-  console.log(text)
-
   return (
     <section className="text-center">
       <Text className="mb-2" as="h1" variant="large">
         um:
       </Text>
-      {text && <RichText text={text} />}
+      <AnimatePresence>
+        {text && (
+          <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            <RichText text={text} />
+          </motion.span>
+        )}
+      </AnimatePresence>
     </section>
   )
 }

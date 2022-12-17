@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
-import { About } from '@src/components'
+import { About, Artist } from '@src/components'
+import Link from 'next/link'
 
 type SidebarType = 'about' | 'artists' | 'tags'
 
@@ -12,11 +13,19 @@ export default function SideBarContent() {
 
   const types: { [key in SidebarType]: () => JSX.Element } = {
     about: () => <About />,
-    artists: () => <p>artist list</p>,
+    artists: () => <Artist />,
     tags: () => <p>tags</p>,
   }
 
   const Cmp = types[type as SidebarType]
 
-  return <Cmp />
+  return (
+    <>
+      {!query.sidebar ||
+        (query.sidebar !== 'about' && (
+          <Link href="/">{'<- um bláa vasann'}</Link>
+        ))}
+      <Cmp />
+    </>
+  )
 }

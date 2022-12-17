@@ -14,15 +14,16 @@ export default function RichText({ text }: Props) {
       components={{
         hyperlink: ({ node, children }) => (
           <a href={node.data.url}>
-            <Text
-              as="span"
-              className={cn('text-blue font-graebenbachMonoRegular')}
-            >
+            <span className="text-blue text-29/32 font-graebenbachMonoRegular">
               {children}
-            </Text>
+            </span>
           </a>
         ),
-        paragraph: ({ children }) => <Text variant="small">{children}</Text>,
+        paragraph: ({ children }) => (
+          <Text className="mb-5" variant="small">
+            {children}
+          </Text>
+        ),
       }}
     />
   )

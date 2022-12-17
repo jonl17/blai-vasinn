@@ -1,0 +1,38 @@
+{
+  "id": "artist",
+  "label": "artist",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        }
+      },
+      "fname": {
+        "type": "Text",
+        "config": {
+          "label": "full name",
+          "placeholder": ""
+        }
+      },
+      "year_of_birth": {
+        "type": "Number",
+        "config": {
+          "label": "year of birth",
+          "placeholder": ""
+        }
+      },
+      "year_of_death": {
+        "type": "Number",
+        "config": {
+          "label": "year of death",
+          "placeholder": "this one is optional (of course)"
+        }
+      }
+    }
+  }
+}
