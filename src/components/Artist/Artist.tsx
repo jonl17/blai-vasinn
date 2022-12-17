@@ -2,6 +2,7 @@ import { ArtistDocument } from '@prismic-types'
 import { createClient } from 'prismicio'
 import { useEffect, useState } from 'react'
 import { Text } from '@src/components'
+import Link from 'next/link'
 
 export default function Artist() {
   const [allArtists, setAllArtists] = useState<Array<ArtistDocument>>([])
@@ -18,9 +19,9 @@ export default function Artist() {
   return (
     <div>
       {allArtists.map((artist, key) => (
-        <Text variant="small" key={key}>
-          {artist.data.fname}
-        </Text>
+        <Link key={key} href={`/listamenn?artist=${artist.uid}`}>
+          <Text variant="small">{artist.data.fname}</Text>
+        </Link>
       ))}
     </div>
   )

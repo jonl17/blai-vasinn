@@ -1,15 +1,11 @@
-import { useRouter } from 'next/router'
 import { About, Artist } from '@src/components'
 import Link from 'next/link'
+import { useSidebarContext } from '@src/context/sidebar'
 
 type SidebarType = 'about' | 'artists' | 'tags'
 
-// query param sidebar determines the content
-// in the sidebar, defaults to about
 export default function SideBarContent() {
-  const { query } = useRouter()
-  const type =
-    typeof query.sidebar === 'string' && query.sidebar ? query.sidebar : 'about'
+  const { type, toggleSidebarType } = useSidebarContext()
 
   const types: { [key in SidebarType]: () => JSX.Element } = {
     about: () => <About />,
@@ -21,10 +17,9 @@ export default function SideBarContent() {
 
   return (
     <>
-      {!query.sidebar ||
-        (query.sidebar !== 'about' && (
-          <Link href="/">{'<- um bláa vasann'}</Link>
-        ))}
+      {type !== 'about' && (
+        <button onClick={() => toggleSidebarType('about')}>X</button>
+      )}
       <Cmp />
     </>
   )

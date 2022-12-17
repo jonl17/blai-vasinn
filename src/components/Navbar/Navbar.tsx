@@ -1,22 +1,22 @@
 import { NavbarItemType } from '@src/types'
-import { useRouter } from 'next/router'
 import React from 'react'
 import NavbarItem from '@src/components/NavbarItem'
+import { useSidebarContext } from '@src/context/sidebar'
 
 export default function Navbar() {
-  const { push } = useRouter()
+  const { toggleSidebarType } = useSidebarContext()
 
   const MOCK_MENU: Array<NavbarItemType> = [
     { label: 'Blái vasinn', type: 'link', url: '/' },
     {
       label: 'Listamenn',
       type: 'button',
-      click: () => push({ query: { sidebar: 'artists' } }),
+      click: () => toggleSidebarType('artists'),
     },
     {
       label: 'Atriðisorð',
       type: 'button',
-      click: () => push({ query: { sidebar: 'tags' } }),
+      click: () => toggleSidebarType('tags'),
     },
   ]
   return (

@@ -9,8 +9,6 @@ type Props = {
 }
 
 export default function NavbarItem({ item }: Props) {
-  const router = useRouter()
-
   if (item.type === 'button') {
     return (
       <button onClick={item.click}>
@@ -21,11 +19,8 @@ export default function NavbarItem({ item }: Props) {
     )
   }
 
-  const query = qs.stringify(router.query)
-  const href = query ? `${item.url}?${query}` : item.url
-
   return (
-    <Link href={href}>
+    <Link href={item.url}>
       <Text className=" hover:text-blue" variant="dynamicLarge">
         {item.label}
       </Text>
