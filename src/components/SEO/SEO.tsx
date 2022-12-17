@@ -1,12 +1,18 @@
+import { ImageType } from '@src/types'
 import Head from 'next/head'
 
-export default function SEO() {
+type Props = {
+  title: string
+  description: string
+  image: ImageType
+}
+
+export default function SEO({ title, description, image }: Props) {
   return (
     <Head>
-      {/* {site_title && <title>{site_title}</title>}
-      {site_description && (
-        <meta name="description" content={site_description} />
-      )} */}
+      {title && <title>{title}</title>}
+      {description && <meta name="description" content={description} />}
+      {image && <meta name="description" content={description} />}
     </Head>
   )
 }

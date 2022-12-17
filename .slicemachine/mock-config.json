@@ -1,5 +1,13 @@
 {
   "_cts": {
-    "homepage": {}
+    "homepage": {},
+    "site_settings": {
+      "about": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
+    }
   }
 }

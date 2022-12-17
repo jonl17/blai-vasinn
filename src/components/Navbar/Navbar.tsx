@@ -1,24 +1,31 @@
+import { NavbarItemType } from '@src/types'
+import { useRouter } from 'next/router'
 import React from 'react'
-import Text from '../Text'
-
-type Props = {}
-
-const MOCK_MENU = [
-  { label: 'Blái vasinn', url: '/' },
-  { label: 'Listamenn', url: null },
-  { label: 'Atriðisorð', url: null },
-]
+import NavbarItem from '@src/components/NavbarItem'
 
 export default function Navbar() {
+  const { push } = useRouter()
+
+  const MOCK_MENU: Array<NavbarItemType> = [
+    { label: 'Blái vasinn', type: 'link', url: '/' },
+    {
+      label: 'Listamenn',
+      type: 'button',
+      click: () => push({ query: { sidebar: 'artists' } }),
+    },
+    {
+      label: 'Atriðisorð',
+      type: 'button',
+      click: () => push({ query: { sidebar: 'tags' } }),
+    },
+  ]
   return (
     <nav className="h-28 border-b-2">
       <div className="flex h-full items-end px-5">
         <div className="grid gap-4 grid-flow-col">
           {MOCK_MENU.map((item, key) => (
             <React.Fragment key={key}>
-              <Text className=" hover:text-blue" variant="dynamicLarge">
-                {item.label}
-              </Text>
+              <NavbarItem item={item} />
               {key !== MOCK_MENU.length - 1 && (
                 <span className="h-full w-1 border-r-2" />
               )}

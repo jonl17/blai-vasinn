@@ -6,10 +6,18 @@ import { HomepageDocument } from '@prismic-types'
 export const getStaticProps: GetStaticProps = async ({ previewData }) => {
   const client = createClient({ previewData })
   const homepage = await client.getSingle('homepage')
+  const seo = {
+    title: homepage.data.seo_title,
+    description: homepage.data.seo_description,
+    image: homepage.data.seo_image,
+  }
+  const siteSettings = await client.getSingle('site_settings')
 
   return {
     props: {
       homepage,
+      seo,
+      siteSettings,
     },
   }
 }

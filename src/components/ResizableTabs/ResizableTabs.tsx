@@ -1,13 +1,13 @@
+import { SidebarContent } from '@src/components'
 import { useResizableTabs } from '@src/store/resizable-tabs'
-import { useRef, useEffect } from 'react'
 import cn from 'classnames'
+import { useEffect, useMemo, useRef } from 'react'
 
 type Props = {
   children: React.ReactNode
-  sidebarContent: React.ReactNode
 }
 
-export default function ResizableTabs({ children, sidebarContent }: Props) {
+export default function ResizableTabs({ children }: Props) {
   const canDrag = useRef(false)
   const asideRef = useRef<HTMLElement | null>(null)
   const containerRef = useRef<HTMLDivElement | null>(null)
@@ -49,7 +49,7 @@ export default function ResizableTabs({ children, sidebarContent }: Props) {
         document.removeEventListener('mouseup', handleMouseUp)
       }
     }
-  }, [])
+  }, [updateContentTabWidth])
 
   return (
     <div className="h-full w-full relative" ref={containerRef}>
@@ -58,8 +58,12 @@ export default function ResizableTabs({ children, sidebarContent }: Props) {
         className="border-l-0 h-full w-1/4 absolute right-0 top-0 overflow-hidden"
       >
         <div className="w-[550px] p-5">
-          {/* sidebar contents */}
-          {sidebarContent}
+          {useMemo(
+            () => (
+              <SidebarContent />
+            ),
+            []
+          )}
         </div>
       </aside>
 
