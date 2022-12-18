@@ -1,7 +1,7 @@
 import { ArtistDocument } from '@prismic-types'
 import { createClient } from 'prismicio'
 import { useEffect, useState } from 'react'
-import { Text } from '@src/components'
+import { AlphabetList, Text } from '@src/components'
 import Link from 'next/link'
 
 export default function Artist() {
@@ -18,11 +18,14 @@ export default function Artist() {
 
   return (
     <div>
-      {allArtists.map((artist, key) => (
-        <Link key={key} href={`/listamenn?artist=${artist.uid}`}>
-          <Text variant="small">{artist.data.fname}</Text>
-        </Link>
-      ))}
+      <AlphabetList
+        listOfDocuments={allArtists
+          .filter((artist) => artist.data.fname !== null)
+          .map((artist) => ({
+            uid: artist.uid,
+            name: artist.data.fname,
+          }))}
+      />
     </div>
   )
 }

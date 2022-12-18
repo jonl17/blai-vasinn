@@ -1,4 +1,4 @@
-import { About, Artist } from '@src/components'
+import { About, Artists } from '@src/components'
 import Link from 'next/link'
 import { useSidebarContext } from '@src/context/sidebar'
 
@@ -9,7 +9,7 @@ export default function SideBarContent() {
 
   const types: { [key in SidebarType]: () => JSX.Element } = {
     about: () => <About />,
-    artists: () => <Artist />,
+    artists: () => <Artists />,
     tags: () => <p>tags</p>,
   }
 
