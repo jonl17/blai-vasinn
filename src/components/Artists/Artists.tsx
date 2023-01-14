@@ -2,7 +2,6 @@ import { ArtistDocument } from '@prismic-types'
 import { createClient } from 'prismicio'
 import { useEffect, useState } from 'react'
 import { AlphabetList, Text } from '@src/components'
-import Link from 'next/link'
 
 export default function Artist() {
   const [allArtists, setAllArtists] = useState<Array<ArtistDocument>>([])

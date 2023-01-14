@@ -1,7 +1,7 @@
+import { HomepageDocument } from '@prismic-types'
 import type { GetStaticProps, NextPage } from 'next'
 import React from 'react'
 import { createClient } from '../../prismicio'
-import { HomepageDocument } from '@prismic-types'
 
 export const getStaticProps: GetStaticProps = async ({ previewData }) => {
   const client = createClient({ previewData })

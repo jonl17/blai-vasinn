@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Text from '../Text'
 
 type Document = {
@@ -36,9 +37,13 @@ const LetterList = ({ letter, listOfDocuments }: LetterListProps) => {
       </Text>
       <ul className="grid items-baseline">
         {listOfDocuments.map((document, key) => (
-          <button className="text-left hover:text-blue" key={key}>
+          <Link
+            href={`/yfirlit/${document.uid}`}
+            className="text-left hover:text-blue"
+            key={key}
+          >
             <Text variant="small">{document.name}</Text>
-          </button>
+          </Link>
         ))}
       </ul>
     </div>
