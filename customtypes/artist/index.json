@@ -32,6 +32,24 @@
           "label": "year of death",
           "placeholder": "this one is optional (of course)"
         }
+      },
+      "documents": {
+        "type": "Group",
+        "config": {
+          "label": "documents",
+          "fields": {
+            "document": {
+              "type": "Link",
+              "config": {
+                "label": "document",
+                "select": "document",
+                "customtypes": [
+                  "document"
+                ]
+              }
+            }
+          }
+        }
       }
     }
   }

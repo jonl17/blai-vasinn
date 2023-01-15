@@ -22,7 +22,7 @@ const sizes: Record<keyof typeof variants, string> = /*tw*/ {
   large: 'text-50/52',
   medium: 'text-29/32',
   small: 'text-18/20.5',
-  dynamicLarge: 'text-3vw/1',
+  dynamicLarge: 'text-3vw/0.55',
 }
 
 export type GetTextStylesProps = Pick<ITextProps, 'variant'>

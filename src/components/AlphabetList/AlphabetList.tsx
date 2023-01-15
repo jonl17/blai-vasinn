@@ -38,7 +38,7 @@ const LetterList = ({ letter, listOfDocuments }: LetterListProps) => {
       <ul className="grid items-baseline">
         {listOfDocuments.map((document, key) => (
           <Link
-            href={`/yfirlit/${document.uid}`}
+            href={`/artists?target=${document.uid}`}
             className="text-left hover:text-blue"
             key={key}
           >

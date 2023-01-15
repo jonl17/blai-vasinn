@@ -41,6 +41,33 @@ interface ArtistDocumentData {
      *
      */
     year_of_death: prismicT.NumberField;
+    /**
+     * documents field in *artist*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: artist.documents[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    documents: prismicT.GroupField<Simplify<ArtistDocumentDataDocumentsItem>>;
+}
+/**
+ * Item in artist → documents
+ *
+ */
+export interface ArtistDocumentDataDocumentsItem {
+    /**
+     * document field in *artist → documents*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: artist.documents[].document
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    document: prismicT.RelationField<"document">;
 }
 /**
  * artist document from Prismic
@@ -52,6 +79,75 @@ interface ArtistDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type ArtistDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ArtistDocumentData>, "artist", Lang>;
+/** Content for document documents */
+interface DocumentDocumentData {
+    /**
+     * title field in *document*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: document.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * type field in *document*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: *None*
+     * - **Default Value**: viðtal
+     * - **API ID Path**: document.type
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/select
+     *
+     */
+    type: prismicT.SelectField<"viðtal" | "eigin skrif" | "erindi og ræður" | "fyrirlestrar" | "gagnrýni og umfjallanir" | "heimildarmyndir" | "kvikmyndir" | "myndbandsviðtöl" | "samtöl" | "sýningarskrár" | "útvarps- og hlaðvarpsviðtöl", "filled">;
+    /**
+     * date field in *document*
+     *
+     * - **Field Type**: Date
+     * - **Placeholder**: *None*
+     * - **API ID Path**: document.date
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/date
+     *
+     */
+    date: prismicT.DateField;
+    /**
+     * origin label field in *document*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: document.origin_label
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    origin_label: prismicT.KeyTextField;
+    /**
+     * origin link field in *document*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: document.origin_link
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    origin_link: prismicT.LinkField;
+}
+/**
+ * document document from Prismic
+ *
+ * - **API ID**: `document`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type DocumentDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<DocumentDocumentData>, "document", Lang>;
 /** Content for homepage documents */
 interface HomepageDocumentData {
     /**
@@ -109,6 +205,18 @@ interface HomepageDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type HomepageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<HomepageDocumentData>, "homepage", Lang>;
+/** Content for interview documents */
+type InterviewDocumentData = Record<string, never>;
+/**
+ * interview document from Prismic
+ *
+ * - **API ID**: `interview`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type InterviewDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<InterviewDocumentData>, "interview", Lang>;
 /** Content for site settings documents */
 interface SiteSettingsDocumentData {
     /**
@@ -144,12 +252,12 @@ interface SiteSettingsDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type SiteSettingsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SiteSettingsDocumentData>, "site_settings", Lang>;
-export type AllDocumentTypes = ArtistDocument | HomepageDocument | SiteSettingsDocument;
+export type AllDocumentTypes = ArtistDocument | DocumentDocument | HomepageDocument | InterviewDocument | SiteSettingsDocument;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ArtistDocumentData, ArtistDocument, HomepageDocumentData, HomepageDocument, SiteSettingsDocumentData, SiteSettingsDocument, AllDocumentTypes };
+        export type { ArtistDocumentData, ArtistDocumentDataDocumentsItem, ArtistDocument, DocumentDocumentData, DocumentDocument, HomepageDocumentData, HomepageDocument, InterviewDocumentData, InterviewDocument, SiteSettingsDocumentData, SiteSettingsDocument, AllDocumentTypes };
     }
 }

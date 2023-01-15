@@ -14,10 +14,10 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": "./",
+    "baseUrl": "src",
     "paths": {
-      "@src/*": ["src/*"],
-      "@prismic-types": [".slicemachine/prismicio.d.ts"]
+      "@src/*": ["./*"],
+      "@prismic-types": ["../.slicemachine/prismicio.d.ts"]
     },
     "plugins": [
       {

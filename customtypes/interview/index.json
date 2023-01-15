@@ -1,0 +1,9 @@
+{
+  "id": "interview",
+  "label": "interview",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {}
+  }
+}

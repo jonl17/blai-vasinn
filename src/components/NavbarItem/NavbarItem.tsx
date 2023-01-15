@@ -11,7 +11,7 @@ type Props = {
 export default function NavbarItem({ item }: Props) {
   if (item.type === 'button') {
     return (
-      <button onClick={item.click}>
+      <button className="mb-3" onClick={item.click}>
         <Text className=" hover:text-blue" variant="dynamicLarge">
           {item.label}
         </Text>

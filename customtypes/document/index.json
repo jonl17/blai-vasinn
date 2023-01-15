@@ -1,0 +1,67 @@
+{
+  "id": "document",
+  "label": "document",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "title",
+          "placeholder": ""
+        }
+      },
+      "type": {
+        "type": "Select",
+        "config": {
+          "label": "type",
+          "placeholder": "",
+          "options": [
+            "viðtal",
+            "eigin skrif",
+            "erindi og ræður",
+            "fyrirlestrar",
+            "gagnrýni og umfjallanir",
+            "heimildarmyndir",
+            "kvikmyndir",
+            "myndbandsviðtöl",
+            "samtöl",
+            "sýningarskrár",
+            "útvarps- og hlaðvarpsviðtöl"
+          ],
+          "default_value": "viðtal"
+        }
+      },
+      "date": {
+        "type": "Date",
+        "config": {
+          "label": "date",
+          "placeholder": ""
+        }
+      },
+      "origin_label": {
+        "type": "Text",
+        "config": {
+          "label": "origin label",
+          "placeholder": ""
+        }
+      },
+      "origin_link": {
+        "type": "Link",
+        "config": {
+          "label": "origin link",
+          "placeholder": "",
+          "select": null
+        }
+      }
+    }
+  }
+}

@@ -9,6 +9,12 @@
         }
       }
     },
-    "artist": {}
+    "artist": {
+      "documents": {}
+    },
+    "document": {
+      "artist": {}
+    },
+    "interview": {}
   }
 }

@@ -7,8 +7,6 @@ type SidebarType = 'about' | 'artists' | 'tags'
 export default function SideBarContent() {
   const { type, toggleSidebarType } = useSidebarContext()
 
-  console.log('rerendering')
-
   const Cmp = useMemo(() => {
     const types: { [key in SidebarType]: () => JSX.Element } = {
       about: () => <About />,
