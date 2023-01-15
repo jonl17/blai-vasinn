@@ -2,7 +2,7 @@ import { Tables } from '@src/components'
 import { TableProps } from '@src/types'
 import { resolveDocumentToTableEntry, resolveLifespan } from '@src/utils'
 import { GetStaticProps } from 'next'
-import { createClient } from 'prismicio'
+import { createClient } from '../../prismicio'
 
 export const getStaticProps: GetStaticProps<{
   tables: Array<TableProps>
