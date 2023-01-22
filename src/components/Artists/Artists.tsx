@@ -1,5 +1,5 @@
 import { ArtistDocument } from '@prismic-types'
-import { createClient } from '../../../prismicio'
+import { createClient } from '@src/prismicio'
 import { useEffect, useState } from 'react'
 import { AlphabetList, Text } from '@src/components'
 

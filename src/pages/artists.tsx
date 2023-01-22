@@ -1,8 +1,11 @@
-import { Tables } from '@src/components'
+import { PageLayout, Tables } from '@src/components'
 import { TableProps } from '@src/types'
 import { resolveDocumentToTableEntry, resolveLifespan } from '@src/utils'
 import { GetStaticProps } from 'next'
-import { createClient } from '../../prismicio'
+import { createClient } from '@src/prismicio'
+import { SiteSettingsDocument } from '@prismic-types'
+import { NextPageWithLayout } from './_app'
+import { ReactElement } from 'react'
 
 export const getStaticProps: GetStaticProps<{
   tables: Array<TableProps>
@@ -40,17 +43,27 @@ export const getStaticProps: GetStaticProps<{
     ),
   }))
 
+  const siteSettings = await client.getSingle('site_settings')
+
   return {
     props: {
       tables,
+      siteSettings,
     },
   }
 }
 
 type Props = {
   tables: Array<TableProps>
+  siteSettings: SiteSettingsDocument<string>
 }
 
-export default function ArtistsPage({ tables }: Props) {
+const ArtistsPage: NextPageWithLayout<Props> = ({ tables }) => {
   return <Tables label="Listamenn" tables={tables ?? []} />
 }
+
+ArtistsPage.getLayout = function getLayout(page: ReactElement) {
+  return <PageLayout siteSettings={page.props.siteSettings}>{page}</PageLayout>
+}
+
+export default ArtistsPage

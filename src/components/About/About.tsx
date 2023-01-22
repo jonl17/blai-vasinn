@@ -1,8 +1,8 @@
-import { createClient } from '../../../prismicio'
 import { RTNode } from '@prismicio/types'
 import { RichText, Text } from '@src/components'
-import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { createClient } from '@src/prismicio'
 
 export default function About() {
   const [text, setText] = useState<[RTNode]>()

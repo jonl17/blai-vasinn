@@ -3,23 +3,30 @@ import { PrismicProvider } from '@prismicio/react'
 import { SEO } from '@src/components'
 import PageLayout from '@src/components/PageLayout'
 import { SidebarProvider } from '@src/context/sidebar'
+import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 import Link from 'next/link'
+import type { ReactElement, ReactNode } from 'react'
 import '../styles/globals.css'
 
-function MyApp({ Component, pageProps }: AppProps) {
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
+export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout ?? ((page) => page)
+
   return (
     <PrismicProvider internalLinkComponent={(props) => <Link {...props} />}>
       <PrismicPreview repositoryName="blai-vasinn">
         <SEO {...pageProps.seo} />
-        <SidebarProvider>
-          <PageLayout siteSettings={pageProps.siteSettings}>
-            <Component {...pageProps} />
-          </PageLayout>
-        </SidebarProvider>
+        {getLayout(<Component {...pageProps} />)}
       </PrismicPreview>
     </PrismicProvider>
   )
 }
-
-export default MyApp

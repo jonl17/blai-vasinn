@@ -1,7 +1,9 @@
-import { HomepageDocument } from '@prismic-types'
-import type { GetStaticProps, NextPage } from 'next'
-import React from 'react'
-import { createClient } from '../../prismicio'
+import { HomepageDocument, SiteSettingsDocument } from '@prismic-types'
+import { PageLayout } from '@src/components'
+import { createClient } from '@src/prismicio'
+import type { GetStaticProps } from 'next'
+import React, { ReactElement } from 'react'
+import { NextPageWithLayout } from './_app'
 
 export const getStaticProps: GetStaticProps = async ({ previewData }) => {
   const client = createClient({ previewData })
@@ -24,17 +26,15 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
 
 type Props = {
   homepage: HomepageDocument
+  siteSettings: SiteSettingsDocument<string>
 }
 
-const Home: NextPage<Props> = ({ homepage }) => {
-  return (
-    <div className="px-12 w-full d-flex flex-wrap">
-      {/* {components.map((cmp, key) => (
-        // @ts-ignore
-        <SliceMachine cmp={cmp} key={key} />
-      ))} */}
-    </div>
-  )
+const Home: NextPageWithLayout<Props> = () => {
+  return <p>þetta er forsíðan</p>
+}
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <PageLayout siteSettings={page.props.siteSettings}>{page}</PageLayout>
 }
 
 export default Home
