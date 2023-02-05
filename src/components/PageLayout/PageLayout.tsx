@@ -11,7 +11,7 @@ type Props = {
 export default function PageLayout({ children }: Props) {
   return (
     <SidebarProvider>
-      <main className="bg-white text-black flex">
+      <div className="flex">
         <Marquee
           items={Array.from(Array(75)).map((_, idx) => `${2022 - idx}`)}
         />
@@ -19,7 +19,7 @@ export default function PageLayout({ children }: Props) {
           <Navbar />
           <ResizableTabs>{children}</ResizableTabs>
         </div>
-      </main>
+      </div>
     </SidebarProvider>
   )
 }

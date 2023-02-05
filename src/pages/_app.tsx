@@ -1,8 +1,6 @@
 import { PrismicPreview } from '@prismicio/next'
 import { PrismicProvider } from '@prismicio/react'
 import { SEO } from '@src/components'
-import PageLayout from '@src/components/PageLayout'
-import { SidebarProvider } from '@src/context/sidebar'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 import Link from 'next/link'
@@ -25,7 +23,9 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     <PrismicProvider internalLinkComponent={(props) => <Link {...props} />}>
       <PrismicPreview repositoryName="blai-vasinn">
         <SEO {...pageProps.seo} />
-        {getLayout(<Component {...pageProps} />)}
+        <main className="bg-white text-black min-h-screen">
+          {getLayout(<Component {...pageProps} />)}
+        </main>
       </PrismicPreview>
     </PrismicProvider>
   )

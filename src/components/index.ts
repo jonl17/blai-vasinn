@@ -14,3 +14,4 @@ export { default as Artists } from './Artists'
 export { default as AlphabetList } from './AlphabetList'
 export { default as Table } from './Table'
 export { default as Tables } from './Tables'
+export { default as SubmissionForm } from "./SubmissionForm"

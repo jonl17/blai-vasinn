@@ -2,6 +2,7 @@ import { NavbarItemType } from '@src/types'
 import React from 'react'
 import NavbarItem from '@src/components/NavbarItem'
 import { useSidebarContext } from '@src/context/sidebar'
+import Link from 'next/link'
 
 export default function Navbar() {
   const { toggleSidebarType } = useSidebarContext()
@@ -33,6 +34,7 @@ export default function Navbar() {
           ))}
         </div>
         <div className="border-2 mb-3 ml-3 flex-1 rounded-lg h-10"></div>
+        <Link href="/senda-inn">senda inn</Link>
       </div>
     </nav>
   )
