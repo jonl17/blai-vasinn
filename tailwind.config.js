@@ -15,6 +15,8 @@ module.exports = {
       white: 'rgb(255,255,230)',
       blue: 'rgb(0,0,255)',
       black: 'rgb(51,51,51)',
+      red: 'red',
+      green: 'green',
     },
     fontSize: {
       '18/20.5': ['18px', '20.5px'],
