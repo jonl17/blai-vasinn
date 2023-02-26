@@ -2,6 +2,7 @@ import FormInput from '@src/components/FormInput'
 import FormInputError from '@src/components/FormInputError'
 import type { Inputs } from '@src/formConfig'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import Text from '../Text'
 
 // Grunnupplýsingar fyrir sendanda:
 // -nafn x
@@ -20,6 +21,9 @@ export default function SubmissionForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <Text className="py-4" variant="medium">
+        Sendandi
+      </Text>
       <FormInput
         name="name"
         register={register}
@@ -50,6 +54,11 @@ export default function SubmissionForm() {
           e.target.value = hyphenated
         }}
       />
+      <Text className="py-4" variant="medium">
+        Gagnið
+      </Text>
+      <FormInput name="origin" register={register} />
+      <FormInput name="date" register={register} type="date" />
       <button className="px-4 py-2 border rounded" type="submit">
         Senda inn
       </button>

@@ -17,3 +17,4 @@ export { default as Tables } from './Tables'
 export { default as SubmissionForm } from "./SubmissionForm"
 export { default as FormInput } from "./FormInput"
 export { default as FormInputError } from "./FormInputError"
+export { default as SimpleLayout } from "./SimpleLayout"

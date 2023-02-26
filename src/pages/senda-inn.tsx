@@ -1,10 +1,12 @@
-import { SubmissionForm, Text } from '@src/components'
+import { SimpleLayout, SubmissionForm, Text } from '@src/components'
+import { ReactElement } from 'react'
+import { NextPageWithLayout } from './_app'
 
-export default function SubmitDocumentPage() {
+const SubmitDocumentPage: NextPageWithLayout = () => {
   return (
     <div className="px-4">
-      <Text className="pt-12" as="h1" variant="dynamicLarge">
-        Sendu inn gögn
+      <Text className="py-12" as="h1" variant="dynamicLarge">
+        Sendu inn gagn
       </Text>
       <section className="max-w-lg">
         <SubmissionForm />
@@ -12,3 +14,9 @@ export default function SubmitDocumentPage() {
     </div>
   )
 }
+
+SubmitDocumentPage.getLayout = function getLayout(page: ReactElement) {
+  return <SimpleLayout>{page}</SimpleLayout>
+}
+
+export default SubmitDocumentPage
