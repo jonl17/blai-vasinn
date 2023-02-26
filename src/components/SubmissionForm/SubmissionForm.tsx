@@ -32,6 +32,24 @@ export default function SubmissionForm() {
         required
         error={formState.errors['email'] && <FormInputError name="email" />}
       />
+      <FormInput
+        name="telephone"
+        register={register}
+        required
+        error={
+          formState.errors['telephone'] && <FormInputError name="telephone" />
+        }
+        onChange={(e) => {
+          // disallow numbers longer than 7 + hyphen
+          if (e.target.value.length > 8) {
+            e.target.value = e.target.value.slice(0, 8)
+          }
+          // add hyphens to phone number
+          const value = e.target.value
+          const hyphenated = value.replace(/(\d{3})(\d{4})/, '$1-$2')
+          e.target.value = hyphenated
+        }}
+      />
 
       <button className="px-4 py-2 border rounded" type="submit">
         Senda inn

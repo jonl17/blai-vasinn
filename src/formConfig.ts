@@ -30,9 +30,12 @@ export const regexValidators: OptionalFormObject<RegExp> = {
   name: /^.{2,}$/,
   email:
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z]{2,})+$/,
+  // validate phone number of this format 123-4567
+  telephone: /^\d{3}-\d{4}$/,
 }
 
 export const errorMessages: OptionalFormObject<string> = {
-  name: 'Nafn ekki gilt',
-  email: 'Netfang ekki gilt',
+  name: 'Það vantar nafn',
+  email: 'Það vantar netfang',
+  telephone: 'Það vantar símanúmer',
 }
