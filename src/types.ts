@@ -7,7 +7,7 @@ export type ImageType = {
 }
 
 export type NavbarItemType =
-  | { label: string; type: 'link'; url: string }
+  | { label: string; type: 'link'; url: string; click?: () => void }
   | { label: string; type: 'button'; click: () => void }
 
 type Origin = { label: string; url: string }

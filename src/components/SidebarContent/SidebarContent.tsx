@@ -5,7 +5,7 @@ import { useMemo } from 'react'
 type SidebarType = 'about' | 'artists' | 'tags'
 
 export default function SideBarContent() {
-  const { type, toggleSidebarType } = useSidebarContext()
+  const { type } = useSidebarContext()
 
   const Cmp = useMemo(() => {
     const types: { [key in SidebarType]: () => JSX.Element } = {
@@ -16,12 +16,5 @@ export default function SideBarContent() {
     return types[type as SidebarType]
   }, [type])
 
-  return (
-    <>
-      {type !== 'about' && (
-        <button onClick={() => toggleSidebarType('about')}>X</button>
-      )}
-      <Cmp />
-    </>
-  )
+  return <Cmp />
 }

@@ -8,7 +8,12 @@ export default function Navbar() {
   const { toggleSidebarType } = useSidebarContext()
 
   const MOCK_MENU: Array<NavbarItemType> = [
-    { label: 'Blái vasinn', type: 'link', url: '/' },
+    {
+      label: 'Blái vasinn',
+      type: 'link',
+      url: '/',
+      click: () => toggleSidebarType('about'),
+    },
     {
       label: 'Listamenn',
       type: 'button',

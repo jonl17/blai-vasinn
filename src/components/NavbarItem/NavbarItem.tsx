@@ -1,8 +1,6 @@
 import { NavbarItemType } from '@src/types'
 import Text from '@src/components/Text'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import qs from 'query-string'
 
 type Props = {
   item: NavbarItemType
@@ -20,7 +18,7 @@ export default function NavbarItem({ item }: Props) {
   }
 
   return (
-    <Link href={item.url}>
+    <Link href={item.url} onClick={item.click}>
       <Text className=" hover:text-blue" variant="dynamicLarge">
         {item.label}
       </Text>

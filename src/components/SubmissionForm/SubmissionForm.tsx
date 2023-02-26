@@ -4,9 +4,9 @@ import type { Inputs } from '@src/formConfig'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 // Grunnupplýsingar fyrir sendanda:
-// -nafn
-// -sími
-// -tölvupóstfang
+// -nafn x
+// -sími x
+// -tölvupóstfang x
 // Og um gagnið:
 // -uppruni gagns (hvar birtist það fyrst/hvaðan kemur það)
 // -ártal
@@ -50,7 +50,6 @@ export default function SubmissionForm() {
           e.target.value = hyphenated
         }}
       />
-
       <button className="px-4 py-2 border rounded" type="submit">
         Senda inn
       </button>

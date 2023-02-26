@@ -9,7 +9,7 @@ const Box = ({ label, className }: { label: string; className?: string }) => {
     <div
       className={cn(
         className,
-        'border-b border-dotted whitespace-nowrap overflow-hidden p-3'
+        'border-b whitespace-nowrap overflow-hidden p-3'
       )}
     >
       <Text variant="small">{label}</Text>
@@ -25,7 +25,7 @@ type ColumnProps = {
 
 const Column = ({ label, items, size = 'medium' }: ColumnProps) => (
   <div
-    className={cn('border-r border-dotted', {
+    className={cn('border-r', {
       'col-span-1': size === 'small',
       'col-span-2': size === 'medium',
       'col-span-5': size === 'large',
@@ -46,7 +46,7 @@ export default function Table({ data }: Pick<TableProps, 'data'>) {
   const origins = data.map((d) => d.origin.label)
   const categories = data.map((d) => d.category)
   return (
-    <div className="w-[750px] border border-dashed grid grid-cols-10">
+    <div className="w-[750px] border grid grid-cols-10">
       <Column size="small" label="Ártal" items={years} />
       <Column size="large" label="Heiti" items={titles} />
       <Column label="Uppruni" items={origins} />
