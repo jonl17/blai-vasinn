@@ -17,7 +17,27 @@ import Text from '../Text'
 export default function SubmissionForm() {
   const { register, handleSubmit, formState } = useForm<Inputs>()
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    // post to api at /api/submission
+    fetch('/api/submission', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json()
+        }
+      })
+      .then((data) => {
+        console.log(data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
